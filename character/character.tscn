@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://dglm154fbva4n"]
+
+[ext_resource type="Script" uid="uid://catw6yj706a3o" path="res://character/character_controller.gd" id="1_dvpr4"]
+[ext_resource type="Script" uid="uid://c4t3b4yqb6ln2" path="res://common/interactable/Interactable3D/InteractableRayCast.gd" id="2_1l1n4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_avm4t"]
+sky_curve = 1.42705
+sky_energy_multiplier = 2.58
+
+[sub_resource type="Sky" id="Sky_o0eve"]
+sky_material = SubResource("ProceduralSkyMaterial_avm4t")
+
+[sub_resource type="Environment" id="Environment_6ivlp"]
+sky = SubResource("Sky_o0eve")
+ambient_light_source = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ivlp"]
+albedo_color = Color(1, 1, 0.0235294, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o8y75"]
+albedo_color = Color(1, 1, 0.0235294, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_61swc"]
+height = 2.54773
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_dvpr4")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.94931, -0.308874)
+environment = SubResource("Environment_6ivlp")
+
+[node name="InteractableRayCast3D" type="RayCast3D" parent="Camera3D" node_paths=PackedStringArray("interactor")]
+target_position = Vector3(0, 0, -4)
+script = ExtResource("2_1l1n4")
+interactor = NodePath("../..")
+metadata/_custom_type_script = "uid://c4t3b4yqb6ln2"
+
+[node name="CharacterPill" type="Node3D" parent="."]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03187, 0)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D"]
+radial_segments = 8
+rings = 8
+smooth_faces = false
+material = SubResource("StandardMaterial3D_6ivlp")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.53572, 0)
+radial_segments = 8
+rings = 8
+smooth_faces = false
+material = SubResource("StandardMaterial3D_6ivlp")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.767225, 0)
+height = 1.54053
+smooth_faces = false
+material = SubResource("StandardMaterial3D_o8y75")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25753, 0)
+shape = SubResource("CapsuleShape3D_61swc")
+
+[connection signal="interactable_connected" from="Camera3D/InteractableRayCast3D" to="Camera3D/InteractableRayCast3D" method="_on_interactable_connected"]
+[connection signal="interactable_disconnected" from="Camera3D/InteractableRayCast3D" to="Camera3D/InteractableRayCast3D" method="_on_interactable_disconnected"]

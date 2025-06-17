@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Interactable" load_steps=2 format=3 uid="uid://c4ptpu5obar2m"]
+
+[ext_resource type="Script" uid="uid://dsprrrei5jo57" path="res://common/interactable/Interactable3D/Interactable.gd" id="1_01pt2"]
+
+[resource]
+script = ExtResource("1_01pt2")
+name = &"pedastal"
+action_press = &"interact"
+tip_string = "press E to interact"
+succsess_string = "interacted with pedastal switch"
+metadata/_custom_type_script = "uid://dsprrrei5jo57"

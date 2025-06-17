@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmti5u7xmeinj"]
+
+[ext_resource type="Script" uid="uid://qgcnm0y5gc12" path="res://puzzles/puzzle_stage.gd" id="1_4xn27"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_avm4t"]
+size = Vector3(129, 1, 129)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_o0eve"]
+size = Vector2(8, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o8y75"]
+albedo_color = Color(0.759678, 0.841935, 1, 1)
+albedo_texture = SubResource("PlaceholderTexture2D_o0eve")
+
+[node name="PuzzleStage" type="StaticBody3D"]
+script = ExtResource("1_4xn27")
+puzzle_name = null
+puzzle_number = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_avm4t")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0, 0.25)
+size = Vector3(129, 0.9, 129)
+material = SubResource("StandardMaterial3D_o8y75")
+
+[node name="NW" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5, 0, -33.5)
+
+[node name="N" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -33.5)
+
+[node name="NE" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, 0, -33.5)
+
+[node name="W" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5, 0, 0)
+
+[node name="C" type="Marker3D" parent="."]
+
+[node name="E" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, 0, 0)
+
+[node name="SW" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5, 0, 33.75)
+
+[node name="S" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33.75)
+
+[node name="SE" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, 0, 33.75)

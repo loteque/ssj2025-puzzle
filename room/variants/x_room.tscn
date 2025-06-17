@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbjvkh88j00ky"]
+
+[ext_resource type="PackedScene" uid="uid://c2wkalqtpue3v" path="res://room/room.tscn" id="1_rl2ti"]
+
+[node name="XRoom" instance=ExtResource("1_rl2ti")]
+
+[node name="PedestalSwitch" parent="Wall" index="2"]
+visible = false
+
+[node name="PedestalSwitch" parent="Wall2" index="2"]
+visible = false
+
+[node name="PedestalSwitch" parent="Wall3" index="2"]
+visible = false
+
+[node name="PedestalSwitch" parent="Wall4" index="2"]
+visible = false
+
+[editable path="Wall"]
+[editable path="Wall2"]
+[editable path="Wall3"]
+[editable path="Wall4"]

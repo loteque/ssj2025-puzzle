@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2wkalqtpue3v"]
+
+[ext_resource type="Script" uid="uid://lp8qrfdcor2w" path="res://room/Room.gd" id="1_j33j0"]
+[ext_resource type="PackedScene" uid="uid://bdlw7q3lk88r2" path="res://wall/wall.tscn" id="1_jm6y3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_avm4t"]
+size = Vector3(34, 1, 34)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_avm4t"]
+size = Vector2(8, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ivlp"]
+albedo_color = Color(1, 0.329412, 1, 1)
+albedo_texture = SubResource("PlaceholderTexture2D_avm4t")
+
+[node name="Room" type="StaticBody3D" node_paths=PackedStringArray("n_wall", "w_wall", "e_wall", "s_wall")]
+script = ExtResource("1_j33j0")
+n_wall = NodePath("NWall")
+n_doorway = true
+n_door_open = true
+n_switch_enabled = true
+w_wall = NodePath("WWall")
+w_doorway = true
+w_door_open = true
+w_switch_enabled = true
+e_wall = NodePath("EWall")
+e_doorway = true
+e_door_open = true
+e_switch_enabled = true
+s_wall = NodePath("SWall")
+s_doorway = true
+s_door_open = true
+s_switch_enabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_avm4t")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(34, 1, 34)
+material = SubResource("StandardMaterial3D_6ivlp")
+
+[node name="NWall" parent="." instance=ExtResource("1_jm6y3")]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="WWall" parent="." instance=ExtResource("1_jm6y3")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="EWall" parent="." instance=ExtResource("1_jm6y3")]
+unique_name_in_owner = true
+
+[node name="SWall" parent="." instance=ExtResource("1_jm6y3")]
+unique_name_in_owner = true
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0)

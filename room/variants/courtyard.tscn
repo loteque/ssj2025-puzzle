@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv0w6pnjd2xuh"]
+
+[ext_resource type="PackedScene" uid="uid://c2wkalqtpue3v" path="res://room/room.tscn" id="1_enh7i"]
+
+[node name="Courtyard" instance=ExtResource("1_enh7i")]
+
+[node name="NWall" parent="." index="2"]
+visible = false
+
+[node name="CSGBakedCollisionShape3D" parent="NWall/Wall" index="0"]
+disabled = true
+
+[node name="WWall" parent="." index="3"]
+visible = false
+
+[node name="CSGBakedCollisionShape3D" parent="WWall/Wall" index="0"]
+disabled = true
+
+[node name="EWall" parent="." index="4"]
+visible = false
+
+[node name="CSGBakedCollisionShape3D" parent="EWall/Wall" index="0"]
+disabled = true
+
+[node name="SWall" parent="." index="5"]
+visible = false
+
+[node name="CSGBakedCollisionShape3D" parent="SWall/Wall" index="0"]
+disabled = true
+
+[editable path="NWall"]
+[editable path="WWall"]
+[editable path="EWall"]
+[editable path="SWall"]

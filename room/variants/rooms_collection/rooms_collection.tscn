@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://72ehous4gg5u"]
+
+[ext_resource type="PackedScene" uid="uid://cbjvkh88j00ky" path="res://room/variants/x_room.tscn" id="1_lhndo"]
+[ext_resource type="PackedScene" uid="uid://16moftt72mqm" path="res://room/variants/t_room.tscn" id="2_78xyl"]
+[ext_resource type="PackedScene" uid="uid://0087y6jyqbbc" path="res://room/variants/l_room.tscn" id="3_hq5aq"]
+[ext_resource type="PackedScene" uid="uid://c7apdrbfkcpe7" path="res://room/variants/d_room.tscn" id="4_hdq77"]
+[ext_resource type="PackedScene" uid="uid://cv0w6pnjd2xuh" path="res://room/variants/courtyard.tscn" id="5_78xyl"]
+[ext_resource type="PackedScene" uid="uid://cg8q2a16n4bjc" path="res://room/variants/h_room.tscn" id="5_hq5aq"]
+
+[node name="Rooms" type="Node3D"]
+
+[node name="XRoom" parent="." instance=ExtResource("1_lhndo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.37, 0, -39.5)
+
+[node name="TRoom" parent="." instance=ExtResource("2_78xyl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.37, 0, 0.25)
+
+[node name="LRoom" parent="." instance=ExtResource("3_hq5aq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.38, 0, 0.25)
+
+[node name="DRoom" parent="." instance=ExtResource("4_hdq77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.38, 0, -39.5)
+
+[node name="HRoom" parent="." instance=ExtResource("5_hq5aq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.87, 0, 39.25)
+
+[node name="Courtyard" parent="." instance=ExtResource("5_78xyl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.88, 0, 39.25)

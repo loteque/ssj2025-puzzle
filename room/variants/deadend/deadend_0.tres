@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="RoomConfig" load_steps=7 format=3 uid="uid://deb12wpb5o5mn"]
+
+[ext_resource type="Script" uid="uid://bo7e47lx1xl3u" path="res://wall/WallConfig.gd" id="1_a1biw"]
+[ext_resource type="Script" uid="uid://cjygd0iam6vsv" path="res://room/RoomConfig.gd" id="2_o4t7f"]
+
+[sub_resource type="Resource" id="Resource_a1biw"]
+script = ExtResource("1_a1biw")
+wall_enabled = true
+doorway_enabled = false
+door_open = false
+switch_enabled = false
+
+[sub_resource type="Resource" id="Resource_o4t7f"]
+script = ExtResource("1_a1biw")
+wall_enabled = true
+doorway_enabled = false
+door_open = false
+switch_enabled = false
+
+[sub_resource type="Resource" id="Resource_g248a"]
+script = ExtResource("1_a1biw")
+wall_enabled = true
+doorway_enabled = true
+door_open = true
+switch_enabled = true
+
+[sub_resource type="Resource" id="Resource_tebbj"]
+script = ExtResource("1_a1biw")
+wall_enabled = true
+doorway_enabled = false
+door_open = false
+switch_enabled = false
+
+[resource]
+script = ExtResource("2_o4t7f")
+room_type = 1
+rotation_90 = 0
+n_wall = SubResource("Resource_o4t7f")
+w_wall = SubResource("Resource_tebbj")
+e_wall = SubResource("Resource_a1biw")
+s_wall = SubResource("Resource_g248a")

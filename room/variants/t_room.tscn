@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://16moftt72mqm"]
+
+[ext_resource type="PackedScene" uid="uid://c2wkalqtpue3v" path="res://room/room.tscn" id="1_fw1k7"]
+
+[node name="TRoom" instance=ExtResource("1_fw1k7")]
+
+[node name="Doorway" parent="NWall/Wall/Wall" index="0"]
+visible = false
+
+[node name="CSGBakedCollisionShape3D2" parent="NWall/Door" index="1"]
+disabled = false
+
+[editable path="NWall"]
+[editable path="WWall"]
+[editable path="EWall"]
+[editable path="SWall"]
