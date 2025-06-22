@@ -1,7 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://btbmxi7kreni8"]
+[gd_scene load_steps=8 format=3 uid="uid://btbmxi7kreni8"]
 
 [ext_resource type="PackedScene" uid="uid://dglm154fbva4n" path="res://character/character.tscn" id="1_avm4t"]
 [ext_resource type="PackedScene" uid="uid://c0otwb05e6i0y" path="res://puzzles/stages/000.tscn" id="2_o0eve"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o0eve"]
+noise_type = 2
+frequency = 0.2287
+fractal_octaves = 3
+fractal_weighted_strength = 0.59
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6ivlp"]
+noise = SubResource("FastNoiseLite_o0eve")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6ivlp"]
+sky_top_color = Color(0.921569, 0.121569, 0.54902, 1)
+sky_horizon_color = Color(0.337059, 0.762784, 0.350369, 1)
+sky_cover = SubResource("NoiseTexture2D_6ivlp")
+ground_bottom_color = Color(0.72549, 0.294118, 1, 1)
+
+[sub_resource type="Sky" id="Sky_61swc"]
+sky_material = SubResource("ProceduralSkyMaterial_6ivlp")
+
+[sub_resource type="Environment" id="Environment_o8y75"]
+background_mode = 2
+sky = SubResource("Sky_61swc")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.6
+ambient_light_energy = 6.07
 
 [node name="Node3D" type="Node3D"]
 
@@ -10,3 +35,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0058, 0)
 
 [node name="PuzzleStage000" parent="." instance=ExtResource("2_o0eve")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.505804, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_o8y75")
