@@ -125,6 +125,13 @@ doorway_enabled = false
 door_open = true
 switch_enabled = false
 
+[sub_resource type="Resource" id="Resource_5qamh"]
+script = ExtResource("4_md5vq")
+wall_enabled = false
+doorway_enabled = false
+door_open = true
+switch_enabled = false
+
 [sub_resource type="Resource" id="Resource_5j2ap"]
 script = ExtResource("4_md5vq")
 wall_enabled = false
@@ -140,20 +147,13 @@ door_open = true
 switch_enabled = false
 
 [sub_resource type="Resource" id="Resource_66flh"]
-script = ExtResource("4_md5vq")
-wall_enabled = false
-doorway_enabled = false
-door_open = true
-switch_enabled = false
-
-[sub_resource type="Resource" id="Resource_5qamh"]
 script = ExtResource("3_2oss7")
 room_type = 0
 rotation_90 = 0
-n_wall = SubResource("Resource_5j2ap")
-w_wall = SubResource("Resource_66flh")
+n_wall = SubResource("Resource_5qamh")
+w_wall = SubResource("Resource_0cun5")
 e_wall = SubResource("Resource_g2l15")
-s_wall = SubResource("Resource_0cun5")
+s_wall = SubResource("Resource_5j2ap")
 metadata/_custom_type_script = "uid://cjygd0iam6vsv"
 
 [sub_resource type="Resource" id="Resource_kv1wo"]
@@ -317,28 +317,12 @@ unique_name_in_owner = true
 
 [node name="Room" parent="NW" index="0" instance=ExtResource("2_rpmy0")]
 room_config = SubResource("Resource_md5vq")
-n_doorway = false
-n_switch_enabled = false
-w_doorway = false
-w_switch_enabled = false
-e_doorway = false
-e_switch_enabled = false
-s_doorway = false
-s_switch_enabled = false
 
 [node name="N" parent="." index="3"]
 unique_name_in_owner = true
 
 [node name="Room" parent="N" index="0" instance=ExtResource("2_rpmy0")]
 room_config = SubResource("Resource_b5ssb")
-n_doorway = false
-n_switch_enabled = false
-w_doorway = false
-w_switch_enabled = false
-e_doorway = false
-e_switch_enabled = false
-s_doorway = false
-s_switch_enabled = false
 
 [node name="NE" parent="." index="4"]
 unique_name_in_owner = true
@@ -348,74 +332,38 @@ puzzle_stage = NodePath("../..")
 room_config = ExtResource("5_b5ssb")
 room_type = 1
 n_wall_enabled = true
-n_doorway = false
 n_door_open = false
-n_switch_enabled = false
 w_wall_enabled = true
-w_doorway = false
 w_door_open = false
-w_switch_enabled = false
 e_wall_enabled = true
-e_doorway = false
 e_door_open = false
-e_switch_enabled = false
 s_wall_enabled = true
+s_doorway = true
+s_switch_enabled = true
 
 [node name="W" parent="." index="5"]
 unique_name_in_owner = true
 
 [node name="Room" parent="W" index="0" instance=ExtResource("2_rpmy0")]
 room_config = SubResource("Resource_3dxrg")
-n_doorway = false
-n_switch_enabled = false
-w_doorway = false
-w_switch_enabled = false
-e_doorway = false
-e_switch_enabled = false
-s_doorway = false
-s_switch_enabled = false
 
 [node name="C" parent="." index="6"]
 unique_name_in_owner = true
 
 [node name="Room" parent="C" index="0" instance=ExtResource("2_rpmy0")]
-room_config = SubResource("Resource_5qamh")
-n_doorway = false
-n_switch_enabled = false
-w_doorway = false
-w_switch_enabled = false
-e_doorway = false
-e_switch_enabled = false
-s_doorway = false
-s_switch_enabled = false
+room_config = SubResource("Resource_66flh")
 
 [node name="E" parent="." index="7"]
 unique_name_in_owner = true
 
 [node name="Room" parent="E" index="0" instance=ExtResource("2_rpmy0")]
 room_config = SubResource("Resource_68ss8")
-n_doorway = false
-n_switch_enabled = false
-w_doorway = false
-w_switch_enabled = false
-e_doorway = false
-e_switch_enabled = false
-s_doorway = false
-s_switch_enabled = false
 
 [node name="SW" parent="." index="8"]
 unique_name_in_owner = true
 
 [node name="Room" parent="SW" index="0" instance=ExtResource("2_rpmy0")]
 room_config = SubResource("Resource_uk2ak")
-n_doorway = false
-n_switch_enabled = false
-w_doorway = false
-w_switch_enabled = false
-e_doorway = false
-e_switch_enabled = false
-s_doorway = false
-s_switch_enabled = false
 
 [node name="S" parent="." index="9"]
 unique_name_in_owner = true
@@ -423,14 +371,6 @@ unique_name_in_owner = true
 [node name="Room" parent="S" index="0" node_paths=PackedStringArray("puzzle_stage") instance=ExtResource("2_rpmy0")]
 puzzle_stage = NodePath("../..")
 room_config = SubResource("Resource_0y4xl")
-n_doorway = false
-n_switch_enabled = false
-w_doorway = false
-w_switch_enabled = false
-e_doorway = false
-e_switch_enabled = false
-s_doorway = false
-s_switch_enabled = false
 
 [node name="SE" parent="." index="10"]
 unique_name_in_owner = true
@@ -438,11 +378,3 @@ unique_name_in_owner = true
 [node name="Room" parent="SE" index="0" node_paths=PackedStringArray("puzzle_stage") instance=ExtResource("2_rpmy0")]
 puzzle_stage = NodePath("../..")
 room_config = SubResource("Resource_60loj")
-n_doorway = false
-n_switch_enabled = false
-w_doorway = false
-w_switch_enabled = false
-e_doorway = false
-e_switch_enabled = false
-s_doorway = false
-s_switch_enabled = false

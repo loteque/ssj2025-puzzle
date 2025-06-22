@@ -29,6 +29,7 @@ func _physics_process(_delta: float) -> void:
         
     var target = get_collider()
     
+
     if target.is_in_group("Interactable"):
         interactable_connected.emit(target)
         

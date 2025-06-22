@@ -1,7 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2wkalqtpue3v"]
+[gd_scene load_steps=13 format=3 uid="uid://c2wkalqtpue3v"]
 
 [ext_resource type="Script" uid="uid://lp8qrfdcor2w" path="res://room/Room.gd" id="1_j33j0"]
 [ext_resource type="PackedScene" uid="uid://bdlw7q3lk88r2" path="res://wall/wall.tscn" id="1_jm6y3"]
+[ext_resource type="Script" uid="uid://bo7e47lx1xl3u" path="res://wall/WallConfig.gd" id="2_tku2a"]
+[ext_resource type="Script" uid="uid://cjygd0iam6vsv" path="res://room/RoomConfig.gd" id="3_qx3y5"]
+
+[sub_resource type="Resource" id="Resource_fntg6"]
+script = ExtResource("2_tku2a")
+wall_enabled = false
+doorway_enabled = false
+door_open = true
+switch_enabled = false
+
+[sub_resource type="Resource" id="Resource_et4wo"]
+script = ExtResource("2_tku2a")
+wall_enabled = false
+doorway_enabled = false
+door_open = true
+switch_enabled = false
+
+[sub_resource type="Resource" id="Resource_cy34l"]
+script = ExtResource("2_tku2a")
+wall_enabled = false
+doorway_enabled = false
+door_open = true
+switch_enabled = false
+
+[sub_resource type="Resource" id="Resource_lbx1e"]
+script = ExtResource("2_tku2a")
+wall_enabled = false
+doorway_enabled = false
+door_open = true
+switch_enabled = false
+
+[sub_resource type="Resource" id="Resource_0i02g"]
+script = ExtResource("3_qx3y5")
+room_type = 0
+rotation_90 = 0
+n_wall = SubResource("Resource_et4wo")
+w_wall = SubResource("Resource_lbx1e")
+e_wall = SubResource("Resource_fntg6")
+s_wall = SubResource("Resource_cy34l")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_avm4t"]
 size = Vector3(34, 1, 34)
@@ -15,22 +54,15 @@ albedo_texture = SubResource("PlaceholderTexture2D_avm4t")
 
 [node name="Room" type="StaticBody3D" node_paths=PackedStringArray("n_wall", "w_wall", "e_wall", "s_wall")]
 script = ExtResource("1_j33j0")
+room_config = SubResource("Resource_0i02g")
 n_wall = NodePath("NWall")
-n_doorway = true
 n_door_open = true
-n_switch_enabled = true
 w_wall = NodePath("WWall")
-w_doorway = true
 w_door_open = true
-w_switch_enabled = true
 e_wall = NodePath("EWall")
-e_doorway = true
 e_door_open = true
-e_switch_enabled = true
 s_wall = NodePath("SWall")
-s_doorway = true
 s_door_open = true
-s_switch_enabled = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_avm4t")
@@ -42,14 +74,18 @@ material = SubResource("StandardMaterial3D_6ivlp")
 [node name="NWall" parent="." instance=ExtResource("1_jm6y3")]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+wall_enabled = false
 
 [node name="WWall" parent="." instance=ExtResource("1_jm6y3")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+wall_enabled = false
 
 [node name="EWall" parent="." instance=ExtResource("1_jm6y3")]
 unique_name_in_owner = true
+wall_enabled = false
 
 [node name="SWall" parent="." instance=ExtResource("1_jm6y3")]
 unique_name_in_owner = true
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0)
+wall_enabled = false

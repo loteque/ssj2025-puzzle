@@ -41,12 +41,12 @@ extends Node3D
         if switch_enabled:
             add_switch()
         else:
-            remove_move_switch()
+            remove_switch()
 
 var _is_wall_enabled: bool = false
 var _has_door: bool = false
 var _is_door_closed: bool = false
-var _has_switch: bool = true
+var _has_switch: bool = false
 
 
 @onready var wall_collision = %WallCollision
@@ -82,7 +82,7 @@ func enable_wall():
 
 func disable_wall():
     wall["wall"].hide()
-    wall["collision"].hide()
+    wall["collision"].disabled = true
     door_open = true
     wall["enabled"] = false
 
@@ -117,7 +117,7 @@ func add_switch():
     _has_switch = true
 
 
-func remove_move_switch():
+func remove_switch():
     switch.disable_switch()
     _has_switch = false
 
@@ -142,7 +142,7 @@ func _ready() -> void:
     if switch_enabled:
         add_switch()
     else:
-        remove_move_switch()
+        remove_switch()
 
     if doorway:
         add_door()

@@ -23,15 +23,13 @@ data = PackedVector3Array(-0.25, -4, 2.5, -0.25, -4, -2.5, -0.25, 4, -2.5, 0.25,
 
 [node name="Wall" type="Node3D"]
 script = ExtResource("1_6wk7l")
-doorway = true
-door_open = true
-switch_enabled = true
 
 [node name="Wall" type="StaticBody3D" parent="."]
 
 [node name="WallCollision" type="CollisionShape3D" parent="Wall"]
 unique_name_in_owner = true
 shape = SubResource("ConcavePolygonShape3D_7jyaa")
+disabled = true
 
 [node name="Wall" type="CSGBox3D" parent="Wall"]
 unique_name_in_owner = true
@@ -42,6 +40,7 @@ material = SubResource("StandardMaterial3D_6ivlp")
 [node name="Doorway" type="CSGBox3D" parent="Wall/Wall"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+visible = false
 operation = 2
 size = Vector3(1, 8, 5)
 material = SubResource("StandardMaterial3D_6ivlp")
@@ -51,7 +50,6 @@ material = SubResource("StandardMaterial3D_6ivlp")
 [node name="Door" type="CSGBox3D" parent="Door"]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 16.75, 4.5, 0)
-visible = false
 size = Vector3(0.5, 8, 5)
 material = SubResource("StandardMaterial3D_7jyaa")
 
@@ -59,7 +57,6 @@ material = SubResource("StandardMaterial3D_7jyaa")
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 16.75, 4.5, 0)
 shape = SubResource("ConcavePolygonShape3D_jm6y3")
-disabled = true
 
 [node name="PedestalSwitch" parent="." instance=ExtResource("1_ah6et")]
 unique_name_in_owner = true
