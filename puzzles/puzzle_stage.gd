@@ -127,7 +127,19 @@ func get_index_to_try(room: Room, direction: Room.WallIndex) -> GridIndex:
             return neighbors[Room.WallIndex.S]
         _:
             return GridIndex.NONE
-  
+
+## move room1 to room2's position and reparent room1 to room2's parent
+## also move room2 to room1's position and reparent room2 to room1's parent
+func swap_room_positions(room1: Room, room2: Room) -> void:
+    var room1_marker := room1.get_parent() as Marker3D
+    var room2_marker := room2.get_parent() as Marker3D
+    var pos1 := room1_marker.global_transform.origin
+    var pos2 := room2_marker.global_transform.origin
+    room1.global_transform.origin = pos2
+    room2.global_transform.origin = pos1
+    room1.reparent(room2_marker)
+    room2.reparent(room1_marker)
+
 
 func _on_room_room_shift_requested(marker: Marker3D, direction: int) -> void:
     prints("_on_room_room_shift_requested", direction, marker.name)
@@ -136,7 +148,7 @@ func _on_room_room_shift_requested(marker: Marker3D, direction: int) -> void:
     prints("index_to_try", index_to_try)
     var can_move: bool = try_index(index_to_try)
     prints("can_move", can_move)
-    if !can_move:
-        return
-    requesting_room.global_transform.origin = get_marker(index_to_try).global_transform.origin
-    requesting_room.reparent(get_marker(index_to_try))
+    if !can_move: return
+    var target_room = get_marker(index_to_try).get_child(0) as Room
+    if target_room == null: return
+    swap_room_positions(requesting_room, target_room)
