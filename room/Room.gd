@@ -193,7 +193,7 @@ class_name Room
     get():
         return room_config.s_wall.switch_enabled
 
-signal room_shift_requested(direction: WallIndex)
+signal room_shift_requested(marker: Marker3D, direction: WallIndex)
 
 enum {
     COUTYARD,
@@ -225,18 +225,20 @@ func _ready():
 
 
 func _on_n_wall_door_request_activated() -> void:
-    room_shift_requested.emit(WallIndex.N)
+    room_shift_requested.emit(get_parent(), WallIndex.N)
     prints("_on_n_wall_door_request_activated","N")
 
 
 func _on_w_wall_door_request_activated() -> void:
-    room_shift_requested.emit(WallIndex.W)
+    room_shift_requested.emit(get_parent(), WallIndex.W)
     prints("_on_w_wall_door_request_activated","W")
 
+
 func _on_e_wall_door_request_activated() -> void:
-    room_shift_requested.emit(WallIndex.E)
+    room_shift_requested.emit(get_parent(), WallIndex.E)
     prints("_on_e_wall_door_request_activated","E")
 
+
 func _on_s_wall_door_request_activated() -> void:
-    room_shift_requested.emit(WallIndex.S)
+    room_shift_requested.emit(get_parent(), WallIndex.S)
     prints("_on_s_wall_door_request_activated","S")

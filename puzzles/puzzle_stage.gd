@@ -124,6 +124,7 @@ func get_index_to_try(room: Room, direction: Room.WallIndex) -> GridIndex:
             return neighbors[Room.WallIndex.N]
         _:
             return GridIndex.NONE
+  
 
-func _on_room_room_shift_requested(direction: int) -> void:
-    prints("_on_room_room_shift_requested", direction)
+func _on_room_room_shift_requested(marker: Marker3D, direction: int) -> void:
+    prints("_on_room_room_shift_requested", direction, marker.name)

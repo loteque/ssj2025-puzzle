@@ -8,28 +8,28 @@
 
 [sub_resource type="Resource" id="Resource_10ut5"]
 script = ExtResource("4_md5vq")
-wall_enabled = false
-doorway_enabled = false
+wall_enabled = true
+doorway_enabled = true
 door_open = true
 switch_enabled = false
 
 [sub_resource type="Resource" id="Resource_7e5ed"]
 script = ExtResource("4_md5vq")
-wall_enabled = false
+wall_enabled = true
 doorway_enabled = false
 door_open = true
 switch_enabled = false
 
 [sub_resource type="Resource" id="Resource_fhprf"]
 script = ExtResource("4_md5vq")
-wall_enabled = false
+wall_enabled = true
 doorway_enabled = false
 door_open = true
-switch_enabled = false
+switch_enabled = true
 
 [sub_resource type="Resource" id="Resource_f0avg"]
 script = ExtResource("4_md5vq")
-wall_enabled = false
+wall_enabled = true
 doorway_enabled = false
 door_open = true
 switch_enabled = false
@@ -45,35 +45,35 @@ s_wall = SubResource("Resource_fhprf")
 
 [sub_resource type="Resource" id="Resource_76ps6"]
 script = ExtResource("4_md5vq")
-wall_enabled = false
-doorway_enabled = false
+wall_enabled = true
+doorway_enabled = true
 door_open = true
 switch_enabled = false
 
 [sub_resource type="Resource" id="Resource_owmhq"]
 script = ExtResource("4_md5vq")
-wall_enabled = false
+wall_enabled = true
 doorway_enabled = false
 door_open = true
 switch_enabled = false
 
 [sub_resource type="Resource" id="Resource_8fs6b"]
 script = ExtResource("4_md5vq")
-wall_enabled = false
-doorway_enabled = false
+wall_enabled = true
+doorway_enabled = true
 door_open = true
-switch_enabled = false
+switch_enabled = true
 
 [sub_resource type="Resource" id="Resource_loinl"]
 script = ExtResource("4_md5vq")
-wall_enabled = false
-doorway_enabled = false
+wall_enabled = true
+doorway_enabled = true
 door_open = true
 switch_enabled = false
 
 [sub_resource type="Resource" id="Resource_b5ssb"]
 script = ExtResource("3_2oss7")
-room_type = 0
+room_type = 3
 rotation_90 = 0
 n_wall = SubResource("Resource_owmhq")
 w_wall = SubResource("Resource_loinl")
@@ -317,12 +317,27 @@ unique_name_in_owner = true
 
 [node name="Room" parent="NW" index="0" instance=ExtResource("2_rpmy0")]
 room_config = SubResource("Resource_md5vq")
+n_wall_enabled = true
+w_wall_enabled = true
+e_wall_enabled = true
+e_doorway = true
+s_wall_enabled = true
+s_switch_enabled = true
 
 [node name="N" parent="." index="3"]
 unique_name_in_owner = true
 
 [node name="Room" parent="N" index="0" instance=ExtResource("2_rpmy0")]
 room_config = SubResource("Resource_b5ssb")
+room_type = 3
+n_wall_enabled = true
+w_wall_enabled = true
+w_doorway = true
+e_wall_enabled = true
+e_doorway = true
+s_wall_enabled = true
+s_doorway = true
+s_switch_enabled = true
 
 [node name="NE" parent="." index="4"]
 unique_name_in_owner = true
@@ -379,4 +394,12 @@ unique_name_in_owner = true
 puzzle_stage = NodePath("../..")
 room_config = SubResource("Resource_60loj")
 
+[connection signal="room_shift_requested" from="NW/Room" to="." method="_on_room_room_shift_requested"]
+[connection signal="room_shift_requested" from="N/Room" to="." method="_on_room_room_shift_requested"]
+[connection signal="room_shift_requested" from="NE/Room" to="." method="_on_room_room_shift_requested"]
+[connection signal="room_shift_requested" from="W/Room" to="." method="_on_room_room_shift_requested"]
+[connection signal="room_shift_requested" from="C/Room" to="." method="_on_room_room_shift_requested"]
+[connection signal="room_shift_requested" from="E/Room" to="." method="_on_room_room_shift_requested"]
+[connection signal="room_shift_requested" from="SW/Room" to="." method="_on_room_room_shift_requested"]
+[connection signal="room_shift_requested" from="S/Room" to="." method="_on_room_room_shift_requested"]
 [connection signal="room_shift_requested" from="SE/Room" to="." method="_on_room_room_shift_requested"]
