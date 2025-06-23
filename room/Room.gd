@@ -193,6 +193,7 @@ class_name Room
     get():
         return room_config.s_wall.switch_enabled
 
+signal room_shift_requested(direction: WallIndex)
 
 enum {
     COUTYARD,
@@ -201,11 +202,6 @@ enum {
     THREEWAY,
     CROSS,
     HALLWAY,
-}
-
-
-enum GridIndex {
-    NW, N, NE, W, C, E, SW, S, SE
 }
 
 
@@ -219,30 +215,28 @@ static var types_map: Dictionary = {
 }
 
 
-var grid_index: GridIndex
-var neighbors: Array = [] 
-
-const NW_NEIGHBORS: Array = [-1, -1, GridIndex.N, GridIndex.W]
-const N_NEIGHBORS: Array = [-1, GridIndex.NW, GridIndex.NE, GridIndex.C]
-const NE_NEIGHBORS: Array = [-1, GridIndex.N, -1, GridIndex.E]
-const W_NEIGHBORS: Array = [GridIndex.NW, -1, GridIndex.C, GridIndex.SW]
-const C_NEIGHBORS: Array = [GridIndex.N, GridIndex.W, GridIndex.E, GridIndex.S]
-const E_NEIGHBORS: Array = [GridIndex.NE, GridIndex.C, -1, GridIndex.SE]
-const SW_NEIGHBORS: Array = [GridIndex.W, -1, GridIndex.C, GridIndex.S, -1]
-const S_NEIGHBORS: Array = [GridIndex.C, GridIndex.SW, GridIndex.SE, -1]
-const SE_NEIGHBORS: Array = [GridIndex.E, GridIndex.S, -1, -1]
-const grid_index_to_neighbors: Dictionary = {
-	GridIndex.NW: NW_NEIGHBORS,
-	GridIndex.N: N_NEIGHBORS,
-	GridIndex.NE: NE_NEIGHBORS,
-	GridIndex.W: W_NEIGHBORS,
-	GridIndex.C: C_NEIGHBORS,
-	GridIndex.E: E_NEIGHBORS,
-	GridIndex.SW: SW_NEIGHBORS,
-	GridIndex.S: S_NEIGHBORS,
-	GridIndex.SE: SE_NEIGHBORS,
+enum WallIndex {
+    N, W, E, S
 }
+
 
 func _ready():
     room_config = room_config
-    
+
+
+func _on_n_wall_door_request_activated() -> void:
+    room_shift_requested.emit(WallIndex.N)
+    prints("_on_n_wall_door_request_activated","N")
+
+
+func _on_w_wall_door_request_activated() -> void:
+    room_shift_requested.emit(WallIndex.W)
+    prints("_on_w_wall_door_request_activated","W")
+
+func _on_e_wall_door_request_activated() -> void:
+    room_shift_requested.emit(WallIndex.E)
+    prints("_on_e_wall_door_request_activated","E")
+
+func _on_s_wall_door_request_activated() -> void:
+    room_shift_requested.emit(WallIndex.S)
+    prints("_on_s_wall_door_request_activated","S")

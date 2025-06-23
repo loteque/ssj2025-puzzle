@@ -61,3 +61,5 @@ shape = SubResource("ConcavePolygonShape3D_jm6y3")
 [node name="PedestalSwitch" parent="." instance=ExtResource("1_ah6et")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[connection signal="switch_activated" from="PedestalSwitch" to="." method="_on_pedestal_switch_switch_activated"]

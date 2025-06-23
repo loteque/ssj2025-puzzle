@@ -4,7 +4,7 @@ class_name InteractableArea3D
 
 @export var interactable: Interactable
 
-signal interaction_started(interactable: Interactable, interactor: Node3D)
+signal interaction_started(interactable: Interactable, interactor: Node3D, result: int)
 signal interaction_completed(interactable: Interactable, interactor: Node3D, result: int)
 
 var _enabled: bool
@@ -27,11 +27,11 @@ func is_enabled() -> bool:
     return _enabled
 
 
-func start_interaction(interactor: Node3D):
-    interaction_started.emit(self, interactor)
+func start_interaction(interactor: Node3D, status := Interactable.FAILED):
+    interaction_started.emit(self, interactor, status)
     interactable.interact_start_debug(interactor, self)
 
 
-func end_interaction(interactor: Node3D):
+func end_interaction(interactor: Node3D, status := Interactable.FAILED):
         interactable.interact_status_debug(interactor, self, Interactable.TEST_OK)
-        interaction_completed.emit(self, interactor, Interactable.TEST_OK)
+        interaction_completed.emit(interactable, interactor, status)

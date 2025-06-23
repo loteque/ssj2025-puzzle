@@ -75,17 +75,26 @@ material = SubResource("StandardMaterial3D_6ivlp")
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 wall_enabled = false
+door_open = true
 
 [node name="WWall" parent="." instance=ExtResource("1_jm6y3")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 wall_enabled = false
+door_open = true
 
 [node name="EWall" parent="." instance=ExtResource("1_jm6y3")]
 unique_name_in_owner = true
 wall_enabled = false
+door_open = true
 
 [node name="SWall" parent="." instance=ExtResource("1_jm6y3")]
 unique_name_in_owner = true
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0)
 wall_enabled = false
+door_open = true
+
+[connection signal="door_request_activated" from="NWall" to="." method="_on_n_wall_door_request_activated"]
+[connection signal="door_request_activated" from="WWall" to="." method="_on_w_wall_door_request_activated"]
+[connection signal="door_request_activated" from="EWall" to="." method="_on_e_wall_door_request_activated"]
+[connection signal="door_request_activated" from="SWall" to="." method="_on_s_wall_door_request_activated"]

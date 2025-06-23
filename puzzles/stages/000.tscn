@@ -378,3 +378,5 @@ unique_name_in_owner = true
 [node name="Room" parent="SE" index="0" node_paths=PackedStringArray("puzzle_stage") instance=ExtResource("2_rpmy0")]
 puzzle_stage = NodePath("../..")
 room_config = SubResource("Resource_60loj")
+
+[connection signal="room_shift_requested" from="SE/Room" to="." method="_on_room_room_shift_requested"]

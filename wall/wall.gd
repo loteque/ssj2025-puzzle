@@ -43,6 +43,8 @@ extends Node3D
         else:
             remove_switch()
 
+signal door_request_activated()
+
 var _is_wall_enabled: bool = false
 var _has_door: bool = false
 var _is_door_closed: bool = false
@@ -153,3 +155,8 @@ func _ready() -> void:
         open_door()
     else:
         close_door()
+
+
+func _on_pedestal_switch_switch_activated() -> void:
+    prints("_on_pedestal_switch_switch_activated")
+    door_request_activated.emit()

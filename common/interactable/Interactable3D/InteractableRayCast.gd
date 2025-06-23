@@ -50,15 +50,6 @@ func _on_interactable_disconnected(area:InteractableArea3D) -> void:
 func _unhandled_input(event: InputEvent) -> void:
     if not has_interactable: return
     if event.is_action_pressed(Interactable.ACTION_NAME):
-        interactable_area.interaction_started.emit(
-            interactable_area.interactable, 
-            interactor
-        )
-        interactable_area.start_interaction(interactor)
+        interactable_area.start_interaction(interactor, Interactable.INTERACTING)
     elif event.is_action_released(Interactable.ACTION_NAME):
-        interactable_area.interaction_completed.emit(
-            interactable_area.interactable, 
-            interactor, 
-            interactable_area.interactable.status
-        )
-        interactable_area.end_interaction(interactor)
+        interactable_area.end_interaction(interactor, Interactable.OK)

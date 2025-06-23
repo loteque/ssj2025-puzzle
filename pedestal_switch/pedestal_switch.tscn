@@ -40,3 +40,5 @@ metadata/_custom_type_script = "uid://cxxp3y4ilvf3m"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="IA3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63461, 0)
 shape = SubResource("SphereShape3D_sbcxk")
+
+[connection signal="interaction_completed" from="IA3D" to="." method="_on_ia_3d_interaction_completed"]
