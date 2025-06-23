@@ -1,0 +1,61 @@
+name: "Build Web"
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+env:
+  GODOT_VERSION: 4.4.1
+  EXPORT_NAME: godot_test_framework
+  GODOT_TEMPLATES_DIRECTORY_SOURCE: /root/.local/share/godot/export_templates
+  GODOT_TEMPLATES_DIRECTORY_DESTINATION: ~/.local/share/godot/export_templates
+  PROJECT_PATH: .
+
+jobs:
+  build_web:
+    env:
+      STAGING_DIRECTORY: build/web
+      EXPORT_NAME: web
+    name: Web Export
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.4.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Install lsb-release
+        run: |
+          apt-get update && apt-get install -y lsb-release
+      - name: Make Template Destination Directory
+        run: |
+          mkdir -v -p ${{ env.GODOT_TEMPLATES_DIRECTORY_DESTINATION }}      
+      - name: Move Template Directory
+        run: |
+          if [ "$(realpath ${{ env.GODOT_TEMPLATES_DIRECTORY_SOURCE }})" != "$(realpath ${{ env.GODOT_TEMPLATES_DIRECTORY_DESTINATION }})" ]; then
+            echo "Directories are different, moving templates..."
+            mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates
+          else
+            echo "Directories are the same, no action needed."
+          fi
+      - name: Create staging directory
+        run: mkdir -v -p $STAGING_DIRECTORY
+      - name: Build Web
+        continue-on-error: true
+        run: |
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "Web" "$STAGING_DIRECTORY/index.html" 2>&1 | tee "$EXPORT_LOG" 
+      - name: Add coi-service-worker
+        run: |
+          git clone https://github.com/gzuidhof/coi-serviceworker.git
+          mv coi-serviceworker/coi-serviceworker.js $STAGING_DIRECTORY/coi-serviceworker.js
+          sed -i '3 i <script src="coi-serviceworker.js"></script>' $STAGING_DIRECTORY/index.html
+      - name: Zip Web artifacts
+        run: zip -r web.zip $STAGING_DIRECTORY
+      - name: Upload Web artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: web
+          path: web.zip
