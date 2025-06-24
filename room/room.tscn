@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2wkalqtpue3v"]
+[gd_scene load_steps=15 format=3 uid="uid://c2wkalqtpue3v"]
 
 [ext_resource type="Script" uid="uid://lp8qrfdcor2w" path="res://room/Room.gd" id="1_j33j0"]
 [ext_resource type="PackedScene" uid="uid://bdlw7q3lk88r2" path="res://wall/wall.tscn" id="1_jm6y3"]
 [ext_resource type="Script" uid="uid://bo7e47lx1xl3u" path="res://wall/WallConfig.gd" id="2_tku2a"]
 [ext_resource type="Script" uid="uid://cjygd0iam6vsv" path="res://room/RoomConfig.gd" id="3_qx3y5"]
+[ext_resource type="Script" uid="uid://cg3gpis6pp2qx" path="res://room/player_reparenter.gd" id="5_qx3y5"]
 
 [sub_resource type="Resource" id="Resource_fntg6"]
 script = ExtResource("2_tku2a")
@@ -52,6 +53,9 @@ size = Vector2(8, 8)
 albedo_color = Color(1, 0.329412, 1, 1)
 albedo_texture = SubResource("PlaceholderTexture2D_avm4t")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_fntg6"]
+size = Vector3(34, 16.5, 34)
+
 [node name="Room" type="StaticBody3D" node_paths=PackedStringArray("n_wall", "w_wall", "e_wall", "s_wall")]
 script = ExtResource("1_j33j0")
 room_config = SubResource("Resource_0i02g")
@@ -94,7 +98,16 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0)
 wall_enabled = false
 door_open = true
 
+[node name="PlayerReparenter" type="Area3D" parent="."]
+script = ExtResource("5_qx3y5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerReparenter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.75, 0)
+shape = SubResource("BoxShape3D_fntg6")
+
 [connection signal="door_request_activated" from="NWall" to="." method="_on_n_wall_door_request_activated"]
 [connection signal="door_request_activated" from="WWall" to="." method="_on_w_wall_door_request_activated"]
 [connection signal="door_request_activated" from="EWall" to="." method="_on_e_wall_door_request_activated"]
 [connection signal="door_request_activated" from="SWall" to="." method="_on_s_wall_door_request_activated"]
+[connection signal="body_entered" from="PlayerReparenter" to="PlayerReparenter" method="_on_body_entered"]
+[connection signal="body_exited" from="PlayerReparenter" to="PlayerReparenter" method="_on_body_exited"]

@@ -3,17 +3,21 @@
 [ext_resource type="Script" uid="uid://catw6yj706a3o" path="res://character/character_controller.gd" id="1_dvpr4"]
 [ext_resource type="Script" uid="uid://c4t3b4yqb6ln2" path="res://common/interactable/Interactable3D/InteractableRayCast.gd" id="2_1l1n4"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_61swc"]
+height = 2.54773
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ivlp"]
 albedo_color = Color(1, 1, 0.0235294, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o8y75"]
 albedo_color = Color(1, 1, 0.0235294, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_61swc"]
-height = 2.54773
-
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_dvpr4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25753, 0)
+shape = SubResource("CapsuleShape3D_61swc")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
@@ -48,10 +52,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.767225, 0)
 height = 1.54053
 smooth_faces = false
 material = SubResource("StandardMaterial3D_o8y75")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25753, 0)
-shape = SubResource("CapsuleShape3D_61swc")
 
 [connection signal="interactable_connected" from="Camera3D/InteractableRayCast3D" to="Camera3D/InteractableRayCast3D" method="_on_interactable_connected"]
 [connection signal="interactable_disconnected" from="Camera3D/InteractableRayCast3D" to="Camera3D/InteractableRayCast3D" method="_on_interactable_disconnected"]
