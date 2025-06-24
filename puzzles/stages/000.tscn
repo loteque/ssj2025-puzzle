@@ -1,9 +1,10 @@
-[gd_scene load_steps=46 format=3 uid="uid://c0otwb05e6i0y"]
+[gd_scene load_steps=47 format=3 uid="uid://c0otwb05e6i0y"]
 
 [ext_resource type="PackedScene" uid="uid://bmti5u7xmeinj" path="res://puzzles/puzzle_stage.tscn" id="1_gp4yn"]
 [ext_resource type="PackedScene" uid="uid://c2wkalqtpue3v" path="res://room/room.tscn" id="2_rpmy0"]
 [ext_resource type="Script" uid="uid://cjygd0iam6vsv" path="res://room/RoomConfig.gd" id="3_2oss7"]
 [ext_resource type="Script" uid="uid://bo7e47lx1xl3u" path="res://wall/WallConfig.gd" id="4_md5vq"]
+[ext_resource type="PackedScene" uid="uid://cgwl0s1ddx08g" path="res://portal/portal.tscn" id="5_10ut5"]
 [ext_resource type="Resource" uid="uid://deb12wpb5o5mn" path="res://room/variants/deadend/deadend_0.tres" id="5_b5ssb"]
 
 [sub_resource type="Resource" id="Resource_10ut5"]
@@ -324,6 +325,9 @@ e_doorway = true
 s_wall_enabled = true
 s_switch_enabled = true
 
+[node name="Portal" parent="NW/Room" index="7" node_paths=PackedStringArray("destination_portal") instance=ExtResource("5_10ut5")]
+destination_portal = NodePath("../../../NE/Room/Portal")
+
 [node name="N" parent="." index="3"]
 unique_name_in_owner = true
 
@@ -355,6 +359,9 @@ e_door_open = false
 s_wall_enabled = true
 s_doorway = true
 s_switch_enabled = true
+
+[node name="Portal" parent="NE/Room" index="7" node_paths=PackedStringArray("destination_portal") instance=ExtResource("5_10ut5")]
+destination_portal = NodePath("../../../NW/Room/Portal")
 
 [node name="W" parent="." index="5"]
 unique_name_in_owner = true
