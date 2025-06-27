@@ -158,7 +158,7 @@ func _ready() -> void:
         power_rail.add_rail()
     else:
         remove_door()
-        if power_rail.is_rail_enabled(): power_rail.remove_rail()
+        if power_rail.is_enabled(): power_rail.remove_rail()
 
     if door_open:
         open_door()
