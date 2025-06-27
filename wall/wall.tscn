@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdlw7q3lk88r2"]
+[gd_scene load_steps=9 format=3 uid="uid://bdlw7q3lk88r2"]
 
 [ext_resource type="Script" uid="uid://c3a3lfn2yc1vj" path="res://wall/wall.gd" id="1_6wk7l"]
 [ext_resource type="PackedScene" uid="uid://737smyksqd8s" path="res://pedestal_switch/pedestal_switch.tscn" id="1_ah6et"]
+[ext_resource type="PackedScene" uid="uid://bk5l6uxhly0si" path="res://power_rail/power_rail.tscn" id="3_1w5xe"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7jyaa"]
 data = PackedVector3Array(17, 0.5, -17, 16.5, 0.5, -2.5, 17, 0.5, -2.5, 17, 16.5, 17, 17, 8.5, 2.5, 17, 0.5, 17, 17, 8.5, -2.5, 17, 8.5, 2.5, 17, 16.5, 17, 17, 8.5, -2.5, 16.5, 8.5, 2.5, 17, 8.5, 2.5, 17, 8.5, -2.5, 17, 16.5, 17, 17, 16.5, -17, 17, 8.5, -2.5, 17, 16.5, -17, 17, 0.5, -2.5, 17, 16.5, 17, 16.5, 16.5, -17, 17, 16.5, -17, 17, 16.5, -17, 16.5, 16.5, -17, 17, 0.5, -17, 17, 0.5, 17, 17, 8.5, 2.5, 17, 0.5, 2.5, 16.5, 0.5, 17, 17, 16.5, 17, 17, 0.5, 17, 17, 0.5, 17, 17, 0.5, 2.5, 16.5, 0.5, 17, 16.5, 0.5, 2.5, 17, 0.5, 2.5, 17, 8.5, 2.5, 17, 0.5, -2.5, 17, 16.5, -17, 17, 0.5, -17, 17, 0.5, -2.5, 16.5, 8.5, -2.5, 17, 8.5, -2.5, 16.5, 0.5, -17, 16.5, 8.5, -2.5, 16.5, 0.5, -2.5, 16.5, 16.5, 17, 16.5, 16.5, -17, 17, 16.5, 17, 16.5, 0.5, 17, 16.5, 16.5, 17, 17, 16.5, 17, 16.5, 8.5, 2.5, 16.5, 16.5, -17, 16.5, 16.5, 17, 16.5, 8.5, 2.5, 16.5, 16.5, 17, 16.5, 0.5, 2.5, 16.5, 8.5, 2.5, 17, 8.5, -2.5, 16.5, 8.5, -2.5, 16.5, 8.5, 2.5, 16.5, 8.5, -2.5, 16.5, 16.5, -17, 16.5, 16.5, -17, 16.5, 8.5, -2.5, 16.5, 0.5, -17, 16.5, 0.5, 2.5, 17, 8.5, 2.5, 16.5, 8.5, 2.5, 16.5, 0.5, 17, 17, 0.5, 2.5, 16.5, 0.5, 2.5, 16.5, 0.5, 2.5, 16.5, 16.5, 17, 16.5, 0.5, 17, 16.5, 16.5, -17, 16.5, 0.5, -17, 17, 0.5, -17, 17, 0.5, -2.5, 16.5, 0.5, -2.5, 16.5, 8.5, -2.5, 17, 0.5, -17, 16.5, 0.5, -17, 16.5, 0.5, -2.5)
@@ -29,6 +30,7 @@ script = ExtResource("1_6wk7l")
 [node name="WallCollision" type="CollisionShape3D" parent="Wall"]
 unique_name_in_owner = true
 shape = SubResource("ConcavePolygonShape3D_7jyaa")
+disabled = true
 
 [node name="Wall" type="CSGBox3D" parent="Wall"]
 unique_name_in_owner = true
@@ -49,6 +51,7 @@ material = SubResource("StandardMaterial3D_6ivlp")
 [node name="Door" type="CSGBox3D" parent="Door"]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 16.75, 4.5, 0)
+visible = false
 size = Vector3(0.5, 8, 5)
 material = SubResource("StandardMaterial3D_7jyaa")
 
@@ -60,5 +63,9 @@ shape = SubResource("ConcavePolygonShape3D_jm6y3")
 [node name="PedestalSwitch" parent="." instance=ExtResource("1_ah6et")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="PowerRail" parent="." instance=ExtResource("3_1w5xe")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [connection signal="switch_activated" from="PedestalSwitch" to="." method="_on_pedestal_switch_switch_activated"]

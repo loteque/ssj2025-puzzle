@@ -12,14 +12,14 @@ script = ExtResource("4_md5vq")
 wall_enabled = true
 doorway_enabled = true
 door_open = true
-switch_enabled = false
+switch_enabled = true
 
 [sub_resource type="Resource" id="Resource_7e5ed"]
 script = ExtResource("4_md5vq")
 wall_enabled = true
 doorway_enabled = false
 door_open = true
-switch_enabled = false
+switch_enabled = true
 
 [sub_resource type="Resource" id="Resource_fhprf"]
 script = ExtResource("4_md5vq")
@@ -33,11 +33,11 @@ script = ExtResource("4_md5vq")
 wall_enabled = true
 doorway_enabled = false
 door_open = true
-switch_enabled = false
+switch_enabled = true
 
 [sub_resource type="Resource" id="Resource_md5vq"]
 script = ExtResource("3_2oss7")
-room_type = 0
+room_type = 1
 rotation_90 = 0
 n_wall = SubResource("Resource_7e5ed")
 w_wall = SubResource("Resource_f0avg")
@@ -49,14 +49,14 @@ script = ExtResource("4_md5vq")
 wall_enabled = true
 doorway_enabled = true
 door_open = true
-switch_enabled = false
+switch_enabled = true
 
 [sub_resource type="Resource" id="Resource_owmhq"]
 script = ExtResource("4_md5vq")
 wall_enabled = true
 doorway_enabled = false
 door_open = true
-switch_enabled = false
+switch_enabled = true
 
 [sub_resource type="Resource" id="Resource_8fs6b"]
 script = ExtResource("4_md5vq")
@@ -70,7 +70,7 @@ script = ExtResource("4_md5vq")
 wall_enabled = true
 doorway_enabled = true
 door_open = true
-switch_enabled = false
+switch_enabled = true
 
 [sub_resource type="Resource" id="Resource_b5ssb"]
 script = ExtResource("3_2oss7")
@@ -312,20 +312,26 @@ metadata/_custom_type_script = "uid://cjygd0iam6vsv"
 [node name="PuzzleStage000" instance=ExtResource("1_gp4yn")]
 puzzle_name = &""
 puzzle_number = 0
+global_debug = true
 
 [node name="NW" parent="." index="2"]
 unique_name_in_owner = true
 
 [node name="Room" parent="NW" index="0" instance=ExtResource("2_rpmy0")]
 room_config = SubResource("Resource_md5vq")
+room_type = 1
 n_wall_enabled = true
+n_switch_enabled = true
 w_wall_enabled = true
+w_switch_enabled = true
 e_wall_enabled = true
 e_doorway = true
+e_switch_enabled = true
 s_wall_enabled = true
 s_switch_enabled = true
 
 [node name="Portal" parent="NW/Room" index="7" node_paths=PackedStringArray("destination_portal") instance=ExtResource("5_10ut5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 destination_portal = NodePath("../../../NE/Room/Portal")
 
 [node name="N" parent="." index="3"]
@@ -335,10 +341,13 @@ unique_name_in_owner = true
 room_config = SubResource("Resource_b5ssb")
 room_type = 3
 n_wall_enabled = true
+n_switch_enabled = true
 w_wall_enabled = true
 w_doorway = true
+w_switch_enabled = true
 e_wall_enabled = true
 e_doorway = true
+e_switch_enabled = true
 s_wall_enabled = true
 s_doorway = true
 s_switch_enabled = true
@@ -351,16 +360,20 @@ puzzle_stage = NodePath("../..")
 room_config = ExtResource("5_b5ssb")
 room_type = 1
 n_wall_enabled = true
-n_door_open = false
+n_doorway = true
+n_switch_enabled = true
 w_wall_enabled = true
 w_door_open = false
+w_switch_enabled = true
 e_wall_enabled = true
 e_door_open = false
+e_switch_enabled = true
 s_wall_enabled = true
-s_doorway = true
+s_door_open = false
 s_switch_enabled = true
 
 [node name="Portal" parent="NE/Room" index="7" node_paths=PackedStringArray("destination_portal") instance=ExtResource("5_10ut5")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 destination_portal = NodePath("../../../NW/Room/Portal")
 
 [node name="W" parent="." index="5"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5l4b0xwj0oma"]
+
+[ext_resource type="Script" uid="uid://b1fa13kg2mph0" path="res://power_rail/power_connector.gd" id="1_d2lwt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_508n2"]
+
+[node name="PowerConnector" type="Area3D" groups=["PowerConnector"]]
+script = ExtResource("1_d2lwt")
+
+[node name="ConnectorCollision" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 1.7053e-13)
+shape = SubResource("BoxShape3D_508n2")

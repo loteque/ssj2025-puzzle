@@ -2,6 +2,19 @@ extends StaticBody3D
 
 @export var puzzle_name: StringName
 @export var puzzle_number: int
+@export_category("Debug Options")
+@export var global_debug: bool:
+    set(b):
+        DebugProto.debug_on = b
+        global_debug = b
+    get:
+        return DebugProto.debug_on
+@export var debug_script = false:
+    set(b):
+        Debug.self_debug_on = b
+        debug_script = b
+    get():
+        return Debug.self_debug_on
 
 enum GridIndex {
     NONE = -1, 
@@ -89,8 +102,8 @@ func get_neighbors(grid_index: GridIndex) -> Array:
 ## Return the grid index of a given Marker
 func get_marker_grid_index(marker: Marker3D) -> GridIndex:
     if !marker_name_to_grid_index.has(marker.name):
-        prints("puzzle_stage.gd, 94:", "Invalid marker", marker)
-        prints(marker_name_to_grid_index)
+        Debug.printdbg(["puzzle_stage.gd, 94:", "Invalid marker", marker])
+        Debug.printdbg([marker_name_to_grid_index])
         return marker_name_to_grid_index[null]
     return marker_name_to_grid_index[marker.name]
 
@@ -98,7 +111,7 @@ func get_marker_grid_index(marker: Marker3D) -> GridIndex:
 ## return true only if the room at given index is of type COURTYARD = 0.
 func try_index(grid_index: GridIndex) -> bool:
     if grid_index < 0:
-        prints("try_index", grid_index)
+        Debug.printdbg(["try_index", grid_index])
         return false
     var room = get_marker(grid_index).get_child(0) as Room
     if room is not Room or room == null:
@@ -113,9 +126,9 @@ func get_index_to_try(room: Room, direction: Room.WallIndex) -> GridIndex:
     var room_marker_index = get_marker_grid_index(room.get_parent())
     var neighbors = get_neighbors(room_marker_index)
     if neighbors == null or neighbors.is_empty():
-        prints("get_index_to_try", "no neighbors", room_marker_index, neighbors)
+        Debug.printdbg(["get_index_to_try", "no neighbors", room_marker_index, neighbors])
         return GridIndex.NONE
-    prints("get_index_to_try, direction:", direction)
+    Debug.printdbg(["get_index_to_try, direction:", direction])
     match direction:
         Room.WallIndex.N:
             return neighbors[Room.WallIndex.N]
@@ -142,13 +155,21 @@ func swap_room_positions(room1: Room, room2: Room) -> void:
 
 
 func _on_room_room_shift_requested(marker: Marker3D, direction: int) -> void:
-    prints("_on_room_room_shift_requested", direction, marker.name)
+    Debug.printdbg(["_on_room_room_shift_requested", direction, marker.name])
     var requesting_room: Room = marker.get_child(0) as Room
     var index_to_try = get_index_to_try(requesting_room, direction)
-    prints("index_to_try", index_to_try)
+    Debug.printdbg(["index_to_try", index_to_try])
     var can_move: bool = try_index(index_to_try)
-    prints("can_move", can_move)
+    Debug.printdbg(["can_move", can_move])
     if !can_move: return
     var target_room = get_marker(index_to_try).get_child(0) as Room
     if target_room == null: return
     swap_room_positions(requesting_room, target_room)
+
+
+class Debug extends DebugProto:
+    static var self_debug_on: bool = false
+    
+    static func printdbg(message: Array):
+        if not self_debug_on: return
+        super.printdbg(message)

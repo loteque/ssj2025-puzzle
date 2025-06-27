@@ -4,9 +4,15 @@ class_name Interactable
 static var ACTION_NAME: StringName = "interact" 
 
 @export var name: StringName
-@export_multiline var succsess_string: String = "interaction with "+ name + " successful"
 var group_name: StringName = "Interactable"
 var status: int = FAILED
+@export_category("Debug Options")
+@export var debug: bool = false:
+    set(b):
+        debug = b
+        Debug.self_debug_on = b
+    get():
+        return Debug.self_debug_on
 
 enum {
 	OK,
@@ -15,16 +21,28 @@ enum {
     TEST_OK,
 }
 
-func interact_connect_debug(interactor, interactable):
-    prints(interactor, "detecting interactable", interactable)
+class Debug extends DebugProto:
 
-func interact_disconnect_debug(interactor, interactable):
-    prints(interactor, "stopped detecting interactable", interactable)
+    static var self_debug_on: bool = false
 
-func interact_start_debug(interactor, interactable):
-    prints(interactor, "started interaction with", interactable)
+    static func try_connect(interactor, interactable):
+        if not self_debug_on: return
+        printdbg([interactor, "detecting interactable", interactable])
+    
+    static func try_disconnect(interactor, interactable):
+        if not self_debug_on: return
+        printdbg([interactor, "stopped detecting interactable", interactable])
 
-func interact_status_debug(interactor, interactable, _status):
-    prints(interactor, "ended interaction, status code:", _status, "with", interactable)
-    if _status == OK:
-        print(interactable.interactable.succsess_string)
+    static func try_start(interactor, interactable):
+        if not self_debug_on: return
+        printdbg([interactor, "started interaction with", interactable])
+
+    static func try_status(interactor, interactable, status):
+        if not self_debug_on: return
+        printdbg([interactor, "ended interaction, status code:", status, "with", interactable])
+        if status == OK:
+            printdbg(["Interaction with", interactable.name, "successful"])
+
+    static func printdbg(message: Array):
+        if not self_debug_on: return
+        super.printdbg(message)

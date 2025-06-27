@@ -1,6 +1,8 @@
 @tool
-extends StaticBody3D
 class_name Room
+extends StaticBody3D
+
+signal room_shift_requested(marker: Marker3D, direction: WallIndex)
 
 @export var puzzle_stage: StaticBody3D
 @export var room_config: RoomConfig = RoomConfig.new():
@@ -193,7 +195,14 @@ class_name Room
     get():
         return room_config.s_wall.switch_enabled
 
-signal room_shift_requested(marker: Marker3D, direction: WallIndex)
+@export_category("Debug Options")
+@export var debug_script: bool = false:
+    set(b):
+        Debug.self_debug_on = b
+        debug_script = b
+    get():
+        return Debug.self_debug_on
+
 
 enum {
     COUTYARD,
@@ -226,19 +235,28 @@ func _ready():
 
 func _on_n_wall_door_request_activated() -> void:
     room_shift_requested.emit(get_parent(), WallIndex.N)
-    prints("_on_n_wall_door_request_activated","N")
+    Debug.printdbg(["_on_n_wall_door_request_activated","N"])
 
 
 func _on_w_wall_door_request_activated() -> void:
     room_shift_requested.emit(get_parent(), WallIndex.W)
-    prints("_on_w_wall_door_request_activated","W")
+    Debug.printdbg(["_on_w_wall_door_request_activated","W"])
 
 
 func _on_e_wall_door_request_activated() -> void:
     room_shift_requested.emit(get_parent(), WallIndex.E)
-    prints("_on_e_wall_door_request_activated","E")
+    Debug.printdbg(["_on_e_wall_door_request_activated","E"])
 
 
 func _on_s_wall_door_request_activated() -> void:
     room_shift_requested.emit(get_parent(), WallIndex.S)
-    prints("_on_s_wall_door_request_activated","S")
+    Debug.printdbg(["_on_s_wall_door_request_activated","S"])
+
+
+class Debug extends DebugProto:
+    
+    static var self_debug_on: bool = false
+
+    static func printdbg(msg: Array):
+        if not self_debug_on: return 
+        super.printdbg(msg)

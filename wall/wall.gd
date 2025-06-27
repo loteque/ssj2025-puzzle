@@ -1,6 +1,11 @@
 @tool
 extends Node3D
 
+signal power_rail_connected(power_rail: Dictionary)
+signal power_rail_disconnected(power_rail: Dictionary)
+signal door_request_activated
+
+
 @export var wall_enabled: bool = true:
     set(b):
         wall_enabled = b
@@ -16,9 +21,11 @@ extends Node3D
         if !_is_door_ready(): return
         if b:
             add_door()
+            power_rail.add_rail()
             door_open = b
         else:
             remove_door()
+            power_rail.remove_rail()
             door_open = !b
         doorway = b
 
@@ -43,50 +50,46 @@ extends Node3D
         else:
             remove_switch()
 
-signal door_request_activated()
 
-var _is_wall_enabled: bool = false
-var _has_door: bool = false
-var _is_door_closed: bool = false
-var _has_switch: bool = false
-
-
-@onready var wall_collision = %WallCollision
-@onready var wall_csg = %Wall
-@onready var doorway_csg = %Doorway
-@onready var door_collision = %DoorCollision
-@onready var door_csg = %Door
-@onready var switch = %PedestalSwitch
-
-
+@onready var wall_collision := %WallCollision
+@onready var wall_csg := %Wall
+@onready var doorway_csg := %Doorway
+@onready var door_collision := %DoorCollision
+@onready var door_csg := %Door
+@onready var switch := %PedestalSwitch
+@onready var power_rail := %PowerRail
+@onready var wall: Dictionary = {
+    "enabled": false,
+    "has_door": false,
+    "has_switch": true,
+    "has_power_rail": false,
+    "wall": wall_csg,
+    "collision": wall_collision,
+    "power_rail": power_rail,
+}
 @onready var door: Dictionary = {
-    "is_closed": _is_door_closed,
+    "is_closed": false,
     "door": door_csg,
     "doorway": doorway_csg,
     "collision": door_collision,
 }
+
+
 func _is_door_ready() -> bool:
     return !door.is_empty()
 
-@onready var wall: Dictionary = {
-    "enabled": _is_wall_enabled,
-    "has_door": _has_door,
-    "wall": wall_csg,
-    "collision": wall_collision,
-}
-func _is_wall_ready() -> bool:
-    return !wall.is_empty()
 
-func enable_wall():
-    wall["wall"].show()
-    wall["collision"].show()
-    wall["enabled"] = true
+func add_door():
+    door["doorway"].show()
+    door["collision"].disabled = true  
+    wall["has_door"] = true
 
-func disable_wall():
-    wall["wall"].hide()
-    wall["collision"].disabled = true
-    door_open = true
-    wall["enabled"] = false
+
+func remove_door():
+    door["door"].hide()
+    door["doorway"].hide()
+    door["collision"].disabled = false
+    wall["has_door"] = false
 
 
 func close_door():
@@ -101,35 +104,39 @@ func open_door():
     door["is_closed"] = false
 
 
-func remove_door():
-    door["door"].hide()
-    door["doorway"].hide()
-    door["collision"].disabled = false
-    wall["has_door"] = false
-
-
-func add_door():
-    door["doorway"].show()
-    door["collision"].disabled = true  
-    wall["has_door"] = true
-
-
 func add_switch():
     switch.enable_switch()
-    _has_switch = true
+    wall["has_switch"] = true
 
 
 func remove_switch():
     switch.disable_switch()
-    _has_switch = false
+    wall["has_switch"] = false
+
+
+func _is_wall_ready() -> bool:
+    return !wall.is_empty()
+
+
+func enable_wall():
+    wall["wall"].show()
+    wall["collision"].show()
+    wall["enabled"] = true
+
+
+func disable_wall():
+    wall["wall"].hide()
+    wall["collision"].disabled = true
+    door["is_closed"] = false
+    wall["enabled"] = false
 
 
 func is_wall_enabled() -> bool:
-    return _is_wall_enabled
+    return wall["enabled"]
 
 
 func has_move_switch() -> bool:
-    return _has_switch
+    return wall["has_switch"]
 
 
 func has_door() -> bool:
@@ -148,8 +155,10 @@ func _ready() -> void:
 
     if doorway:
         add_door()
+        power_rail.add_rail()
     else:
         remove_door()
+        if power_rail.is_rail_enabled(): power_rail.remove_rail()
 
     if door_open:
         open_door()
@@ -158,5 +167,4 @@ func _ready() -> void:
 
 
 func _on_pedestal_switch_switch_activated() -> void:
-    prints("_on_pedestal_switch_switch_activated")
     door_request_activated.emit()

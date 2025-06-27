@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk5l6uxhly0si"]
+
+[ext_resource type="Script" uid="uid://cdndwmiusibi0" path="res://power_rail/power_rail.gd" id="1_1ad6u"]
+[ext_resource type="Material" uid="uid://cmw1kif8oma8q" path="res://power_rail/disconnected_tex.tres" id="2_464j4"]
+[ext_resource type="PackedScene" uid="uid://b5l4b0xwj0oma" path="res://power_rail/power_connector.tscn" id="3_464j4"]
+
+[node name="PowerRail" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_1ad6u")
+debug_script = true
+
+[node name="PowerRailModel" type="CSGBox3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.375, 0.25, 0)
+size = Vector3(17.75, 1, 1)
+material = ExtResource("2_464j4")
+
+[node name="ConnectorEdge" parent="." instance=ExtResource("3_464j4")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.25, 0.25, 7.54022e-07)
+
+[node name="ConnectorCenter" parent="." instance=ExtResource("3_464j4")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.25, 2.18557e-08)
+type = 1
+
+[connection signal="power_rail_connected" from="." to="." method="_debug_on_power_rail_connected"]
+[connection signal="power_rail_disconnected" from="." to="." method="_debug_on_power_rail_disconnected"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="area_entered" from="ConnectorEdge" to="." method="_on_connector_edge_area_entered"]
+[connection signal="area_exited" from="ConnectorEdge" to="." method="_on_connector_edge_area_exited"]
+[connection signal="area_entered" from="ConnectorCenter" to="." method="_on_connector_center_area_entered"]
+[connection signal="area_exited" from="ConnectorCenter" to="." method="_on_connector_center_area_exited"]

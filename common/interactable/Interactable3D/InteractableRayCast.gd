@@ -44,7 +44,7 @@ func _on_interactable_disconnected(area:InteractableArea3D) -> void:
     has_interactable = false
     is_interacting = false
     interactable_area = area
-    area.interactable.interact_disconnect_debug(interactor, area)
+    Interactable.Debug.try_disconnect(interactor, area)
 
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -5,7 +5,5 @@
 [resource]
 script = ExtResource("1_01pt2")
 name = &"pedastal"
-action_press = &"interact"
-tip_string = "press E to interact"
-succsess_string = "interacted with pedastal switch"
+debug = false
 metadata/_custom_type_script = "uid://dsprrrei5jo57"

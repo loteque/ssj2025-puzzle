@@ -8,20 +8,20 @@ script = ExtResource("1_a1biw")
 wall_enabled = true
 doorway_enabled = false
 door_open = false
-switch_enabled = false
+switch_enabled = true
 
 [sub_resource type="Resource" id="Resource_o4t7f"]
 script = ExtResource("1_a1biw")
 wall_enabled = true
-doorway_enabled = false
-door_open = false
-switch_enabled = false
+doorway_enabled = true
+door_open = true
+switch_enabled = true
 
 [sub_resource type="Resource" id="Resource_g248a"]
 script = ExtResource("1_a1biw")
 wall_enabled = true
-doorway_enabled = true
-door_open = true
+doorway_enabled = false
+door_open = false
 switch_enabled = true
 
 [sub_resource type="Resource" id="Resource_tebbj"]
@@ -29,7 +29,7 @@ script = ExtResource("1_a1biw")
 wall_enabled = true
 doorway_enabled = false
 door_open = false
-switch_enabled = false
+switch_enabled = true
 
 [resource]
 script = ExtResource("2_o4t7f")

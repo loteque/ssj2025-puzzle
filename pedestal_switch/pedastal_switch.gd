@@ -18,5 +18,5 @@ func disable_switch():
 
 func _on_ia_3d_interaction_completed(_interactable: Interactable, _interactor: Node3D, result: int) -> void:
     if result == Interactable.OK:
-        prints("_on_ia_3d_interaction_completed", interactable, _interactor, result)
+        Interactable.Debug.printdbg(["_on_ia_3d_interaction_completed", interactable, _interactor, result])
         switch_activated.emit()

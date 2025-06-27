@@ -29,9 +29,9 @@ func is_enabled() -> bool:
 
 func start_interaction(interactor: Node3D, status := Interactable.FAILED):
     interaction_started.emit(self, interactor, status)
-    interactable.interact_start_debug(interactor, self)
+    Interactable.Debug.try_start(interactor, self)
 
 
 func end_interaction(interactor: Node3D, status := Interactable.FAILED):
-        interactable.interact_status_debug(interactor, self, Interactable.TEST_OK)
+        Interactable.Debug.try_status(interactor, self, Interactable.TEST_OK)
         interaction_completed.emit(interactable, interactor, status)
