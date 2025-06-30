@@ -6,8 +6,9 @@ extends CharacterBody3D
 var target_velocity = Vector3.ZERO
 
 func _ready():
-    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+    
 func _unhandled_input(event):
     if event.is_action_pressed("demo_quit"):
         get_tree().quit()
