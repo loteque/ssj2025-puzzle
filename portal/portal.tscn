@@ -27,12 +27,14 @@ material = SubResource("StandardMaterial3D_508n2")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, 0)
 
-[node name="PortalPowerConnector" parent="." instance=ExtResource("3_x3c8y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -16.5)
-type = 2
-
 [node name="PowerRail" parent="." instance=ExtResource("2_508n2")]
 unique_name_in_owner = true
 
+[node name="PortalPowerConnector" parent="." instance=ExtResource("3_x3c8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -17.25)
+type = 2
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="body_entered" from="PortalArea" to="." method="_on_portal_area_body_entered"]
+[connection signal="connected" from="PortalPowerConnector" to="." method="_on_portal_power_connected"]
+[connection signal="disconnected" from="PortalPowerConnector" to="." method="_on_portal_power_connected"]

@@ -1,3 +1,4 @@
+@tool
 extends StaticBody3D
 
 @export var puzzle_name: StringName
@@ -82,13 +83,19 @@ const grid_index_to_neighbors: Dictionary = {
     se_marker.name: GridIndex.SE,
     null: GridIndex.NONE,
 }
-
+@onready var win_label = %WinLabel
 
 ## Return the 3D marker for the given index.
 func get_marker(grid_index: GridIndex) -> Marker3D:
     if grid_index < 0:
         return null
     return grid_index_to_marker[grid_index]
+
+## Get the room at a given marker 
+func get_room_by_marker_name(marker_name: StringName) -> Room:
+    if !marker_name_to_grid_index.has(marker_name): return
+    var marker = get_node(str(marker_name))
+    return marker.get_node("Room")
 
 
 ## Return an array of all the neighboring indicies of rooms given 
@@ -154,6 +161,15 @@ func swap_room_positions(room1: Room, room2: Room) -> void:
     room2.reparent(room1_marker)
 
 
+func _ready():
+    var marker_names = marker_name_to_grid_index.keys()
+    for marker_name in marker_names:
+        if not marker_name: continue
+        var room = get_room_by_marker_name(marker_name)
+        room.power_rail_connected.connect(_on_power_rail_connected)
+        room.power_rail_disconnected.connect(_on_power_rail_disconnected)
+
+
 func _on_room_room_shift_requested(marker: Marker3D, direction: int) -> void:
     Debug.printdbg(["_on_room_room_shift_requested", direction, marker.name])
     var requesting_room: Room = marker.get_child(0) as Room
@@ -165,6 +181,16 @@ func _on_room_room_shift_requested(marker: Marker3D, direction: int) -> void:
     var target_room = get_marker(index_to_try).get_child(0) as Room
     if target_room == null: return
     swap_room_positions(requesting_room, target_room)
+
+
+func _on_power_rail_connected(connector: PowerConnector):
+    if connector.power_node.graph_set_has_portals(connector.graph_set):
+        win_label.show()
+
+
+func _on_power_rail_disconnected(connector: PowerConnector):
+    if connector.power_node.graph_set_has_portals(connector.graph_set):
+        win_label.hide()
 
 
 class Debug extends DebugProto:

@@ -51,7 +51,6 @@ material = SubResource("StandardMaterial3D_6ivlp")
 [node name="Door" type="CSGBox3D" parent="Door"]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 16.75, 4.5, 0)
-visible = false
 size = Vector3(0.5, 8, 5)
 material = SubResource("StandardMaterial3D_7jyaa")
 
@@ -69,3 +68,5 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [connection signal="switch_activated" from="PedestalSwitch" to="." method="_on_pedestal_switch_switch_activated"]
+[connection signal="power_rail_connected" from="PowerRail" to="." method="_on_power_rail_connected"]
+[connection signal="power_rail_disconnected" from="PowerRail" to="." method="_on_power_rail_disconnected"]

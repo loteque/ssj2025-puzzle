@@ -8,10 +8,10 @@ extends Node3D
 ## power rail connector nodes in sync with the visibility of the portal.
 ## Connector nodes emit a signal when they are connected or disconnected.
 
-signal power_rail_connected(power_rail: Dictionary)
-signal power_rail_disconnected(power_rail: Dictionary)
-
 @export var destination_portal: Node3D
+
+signal portal_power_connected(connector: PowerConnector)
+signal portal_power_disconnected(connector: PowerConnector)
 
 @onready var arrival_offset: Marker3D = %ArrivalOffset
 
@@ -21,3 +21,11 @@ func _on_portal_area_body_entered(body:Node3D) -> void:
     DebugProto.printdbg(["Player entered portal area"])
     var destination_pos = destination_portal.arrival_offset.global_transform.origin
     body.global_transform.origin = destination_pos
+
+
+func _on_portal_power_connected(connector: PowerConnector) -> void:
+    portal_power_connected.emit(connector)
+
+
+func _on_portal_power_disconnected(connector: PowerConnector) -> void:
+    portal_power_disconnected.emit(connector)

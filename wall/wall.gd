@@ -1,9 +1,9 @@
 @tool
 extends Node3D
 
-signal power_rail_connected(power_rail: Dictionary)
-signal power_rail_disconnected(power_rail: Dictionary)
 signal door_request_activated
+signal power_rail_connected(connection: PowerConnector)
+signal power_rail_disconnected(connection: PowerConnector)
 
 
 @export var wall_enabled: bool = true:
@@ -21,11 +21,11 @@ signal door_request_activated
         if !_is_door_ready(): return
         if b:
             add_door()
-            power_rail.add_rail()
+            power_rail.enable_rail()
             door_open = b
         else:
             remove_door()
-            power_rail.remove_rail()
+            power_rail.disable_rail()
             door_open = !b
         doorway = b
 
@@ -155,10 +155,12 @@ func _ready() -> void:
 
     if doorway:
         add_door()
-        power_rail.add_rail()
+        if not power_rail: await ready
+        power_rail.enable_rail()
     else:
         remove_door()
-        if power_rail.is_enabled(): power_rail.remove_rail()
+        if not power_rail: await ready
+        power_rail.disable_rail()
 
     if door_open:
         open_door()
@@ -168,3 +170,11 @@ func _ready() -> void:
 
 func _on_pedestal_switch_switch_activated() -> void:
     door_request_activated.emit()
+
+
+func _on_power_rail_connected(connection: PowerConnector) -> void:
+    power_rail_connected.emit(connection)
+
+
+func _on_power_rail_disconnected(connection: PowerConnector) -> void:
+    power_rail_disconnected.emit(connection)

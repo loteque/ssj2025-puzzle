@@ -2,8 +2,6 @@
 class_name Room
 extends StaticBody3D
 
-signal room_shift_requested(marker: Marker3D, direction: WallIndex)
-
 @export var puzzle_stage: StaticBody3D
 @export var room_config: RoomConfig = RoomConfig.new():
     set(rc):
@@ -203,6 +201,9 @@ signal room_shift_requested(marker: Marker3D, direction: WallIndex)
     get():
         return Debug.self_debug_on
 
+signal room_shift_requested(marker: Marker3D, direction: WallIndex)
+signal power_rail_connected
+signal power_rail_disconnected
 
 enum {
     COUTYARD,
@@ -251,6 +252,14 @@ func _on_e_wall_door_request_activated() -> void:
 func _on_s_wall_door_request_activated() -> void:
     room_shift_requested.emit(get_parent(), WallIndex.S)
     Debug.printdbg(["_on_s_wall_door_request_activated","S"])
+
+
+func _on_power_rail_connected(connection: PowerConnector) -> void:
+    power_rail_connected.emit(connection)
+
+
+func _on_power_rail_disconnected(connection: PowerConnector) -> void:
+    power_rail_disconnected.emit(connection)
 
 
 class Debug extends DebugProto:
