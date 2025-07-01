@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://c2wkalqtpue3v"]
 
-[ext_resource type="Script" uid="uid://lp8qrfdcor2w" path="res://room/Room.gd" id="1_j33j0"]
-[ext_resource type="PackedScene" uid="uid://bdlw7q3lk88r2" path="res://wall/wall.tscn" id="1_jm6y3"]
-[ext_resource type="Script" uid="uid://bo7e47lx1xl3u" path="res://wall/WallConfig.gd" id="2_tku2a"]
-[ext_resource type="Script" uid="uid://cjygd0iam6vsv" path="res://room/RoomConfig.gd" id="3_qx3y5"]
-[ext_resource type="Script" uid="uid://cg3gpis6pp2qx" path="res://room/player_reparenter.gd" id="5_qx3y5"]
+[ext_resource type="Script" uid="uid://lp8qrfdcor2w" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/room/Room.gd" id="1_j33j0"]
+[ext_resource type="PackedScene" uid="uid://bdlw7q3lk88r2" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/wall/wall.tscn" id="1_jm6y3"]
+[ext_resource type="Script" uid="uid://bo7e47lx1xl3u" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/wall/WallConfig.gd" id="2_tku2a"]
+[ext_resource type="Script" uid="uid://cjygd0iam6vsv" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/room/RoomConfig.gd" id="3_qx3y5"]
+[ext_resource type="Script" uid="uid://cg3gpis6pp2qx" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/room/player_reparenter.gd" id="5_qx3y5"]
 
 [sub_resource type="Resource" id="Resource_fntg6"]
 script = ExtResource("2_tku2a")
@@ -79,24 +79,20 @@ material = SubResource("StandardMaterial3D_6ivlp")
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 wall_enabled = false
-door_open = true
 
 [node name="WWall" parent="." instance=ExtResource("1_jm6y3")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 wall_enabled = false
-door_open = true
 
 [node name="EWall" parent="." instance=ExtResource("1_jm6y3")]
 unique_name_in_owner = true
 wall_enabled = false
-door_open = true
 
 [node name="SWall" parent="." instance=ExtResource("1_jm6y3")]
 unique_name_in_owner = true
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0)
 wall_enabled = false
-door_open = true
 
 [node name="PlayerReparenter" type="Area3D" parent="."]
 script = ExtResource("5_qx3y5")

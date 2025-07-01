@@ -16,8 +16,8 @@ enum Connector {
     CENTER, EDGE
 }
 
-const DISCONNECTED_TEX: StandardMaterial3D = preload("res://power_rail/disconnected_tex.tres")
-const CONNECTED_TEX: StandardMaterial3D = preload("res://power_rail/connected_tex.tres")
+const DISCONNECTED_TEX: StandardMaterial3D = preload("res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/power_rail/disconnected_tex.tres")
+const CONNECTED_TEX: StandardMaterial3D = preload("res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/power_rail/connected_tex.tres")
 
 @onready var power_rail: PowerRail = PowerRail.new(
     self, 

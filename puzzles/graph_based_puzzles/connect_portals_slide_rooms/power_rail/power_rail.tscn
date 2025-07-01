@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bk5l6uxhly0si"]
 
-[ext_resource type="Script" uid="uid://cdndwmiusibi0" path="res://power_rail/power_rail.gd" id="1_1ad6u"]
-[ext_resource type="Material" uid="uid://cmw1kif8oma8q" path="res://power_rail/disconnected_tex.tres" id="2_464j4"]
-[ext_resource type="PackedScene" uid="uid://b5l4b0xwj0oma" path="res://power_rail/power_connector.tscn" id="3_464j4"]
+[ext_resource type="Script" uid="uid://cdndwmiusibi0" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/power_rail/power_rail.gd" id="1_1ad6u"]
+[ext_resource type="Material" uid="uid://cmw1kif8oma8q" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/power_rail/disconnected_tex.tres" id="2_464j4"]
+[ext_resource type="PackedScene" uid="uid://b5l4b0xwj0oma" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/power_rail/power_connector.tscn" id="3_464j4"]
 
 [node name="PowerRail" type="Node3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)

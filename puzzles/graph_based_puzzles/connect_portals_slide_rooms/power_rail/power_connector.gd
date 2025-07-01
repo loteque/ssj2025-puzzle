@@ -3,6 +3,13 @@ class_name PowerConnector
 extends Area3D
 
 @export_enum(TYPE_MAP[EDGE], TYPE_MAP[CENTER], TYPE_MAP[PORTAL]) var type: int
+@export_category("Debug Options")
+@export var debug_script: bool: 
+    set(b):
+        Debug.self_debug_on = b
+        debug_script = b
+    get():
+        return Debug.self_debug_on
 
 signal connected(connector: PowerConnector)
 signal disconnected(connector: PowerConnector)
@@ -31,9 +38,9 @@ func _on_area_entered(area:Area3D) -> void:
     area.power_node.connect_node(power_node)
     graph_set = power_node.dfs()
     power_node.graph_set_has_portals(graph_set)
-    prints("\n", "Connected: ")
-    prints("\t", TYPE_MAP[type], power_node, "portals", power_node.portals)
-    prints("\t", "graph_set:", graph_set)
+    Debug.printdbg(["\n", "Connected: "])
+    Debug.printdbg(["\t", TYPE_MAP[type], power_node, "portals", power_node.portals])
+    Debug.printdbg(["\t", "graph_set:", graph_set])
     connected.emit(area)
 
 
@@ -43,9 +50,9 @@ func _on_area_exited(area:Area3D) -> void:
     area.power_node.disconnect_node(power_node)
     graph_set = power_node.dfs()
     power_node.graph_set_has_portals(graph_set)
-    prints("\n", "Disconnected: ")
-    prints("\t", TYPE_MAP[type], power_node, "portals", power_node.portals)
-    prints("\t", "graph_set:", graph_set)
+    Debug.printdbg(["\n", "Disconnected: "])
+    Debug.printdbg(["\t", TYPE_MAP[type], power_node, "portals", power_node.portals])
+    Debug.printdbg(["\t", "graph_set:", graph_set])
     disconnected.emit(area)
 
 
@@ -69,3 +76,10 @@ class PowerNode extends LGraphNode:
 
     func _init(_type: int):
         self.type = _type
+
+class Debug extends DebugProto:
+    static var self_debug_on: bool = false
+
+    static func printdbg(msg: Array):
+        if not self_debug_on: return
+        super.printdbg(msg)

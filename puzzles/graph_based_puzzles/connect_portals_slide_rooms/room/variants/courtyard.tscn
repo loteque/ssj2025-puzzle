@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cv0w6pnjd2xuh"]
 
-[ext_resource type="PackedScene" uid="uid://c2wkalqtpue3v" path="res://room/room.tscn" id="1_enh7i"]
+[ext_resource type="PackedScene" uid="uid://c2wkalqtpue3v" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/room/room.tscn" id="1_enh7i"]
 
 [node name="Courtyard" instance=ExtResource("1_enh7i")]
 

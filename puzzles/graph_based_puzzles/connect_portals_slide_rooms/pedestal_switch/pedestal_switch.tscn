@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://737smyksqd8s"]
 
-[ext_resource type="Script" uid="uid://c5f3tjnyunpjn" path="res://pedestal_switch/pedastal_switch.gd" id="1_3c5ow"]
+[ext_resource type="Script" uid="uid://c5f3tjnyunpjn" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/pedestal_switch/pedastal_switch.gd" id="1_3c5ow"]
 [ext_resource type="Script" uid="uid://cxxp3y4ilvf3m" path="res://common/interactable/Interactable3D/InteractableArea3D.gd" id="1_krlyf"]
-[ext_resource type="Resource" uid="uid://c4ptpu5obar2m" path="res://pedestal_switch/pedastal_switch.tres" id="2_sbcxk"]
+[ext_resource type="Resource" uid="uid://c4ptpu5obar2m" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/pedestal_switch/pedastal_switch.tres" id="2_sbcxk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_poli0"]
 albedo_color = Color(1, 0.156863, 1, 1)

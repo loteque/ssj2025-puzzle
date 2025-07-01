@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bdlw7q3lk88r2"]
 
-[ext_resource type="Script" uid="uid://c3a3lfn2yc1vj" path="res://wall/wall.gd" id="1_6wk7l"]
-[ext_resource type="PackedScene" uid="uid://737smyksqd8s" path="res://pedestal_switch/pedestal_switch.tscn" id="1_ah6et"]
-[ext_resource type="PackedScene" uid="uid://bk5l6uxhly0si" path="res://power_rail/power_rail.tscn" id="3_1w5xe"]
+[ext_resource type="Script" uid="uid://c3a3lfn2yc1vj" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/wall/wall.gd" id="1_6wk7l"]
+[ext_resource type="PackedScene" uid="uid://737smyksqd8s" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/pedestal_switch/pedestal_switch.tscn" id="1_ah6et"]
+[ext_resource type="PackedScene" uid="uid://bk5l6uxhly0si" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/power_rail/power_rail.tscn" id="3_1w5xe"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7jyaa"]
 data = PackedVector3Array(17, 0.5, -17, 16.5, 0.5, -2.5, 17, 0.5, -2.5, 17, 16.5, 17, 17, 8.5, 2.5, 17, 0.5, 17, 17, 8.5, -2.5, 17, 8.5, 2.5, 17, 16.5, 17, 17, 8.5, -2.5, 16.5, 8.5, 2.5, 17, 8.5, 2.5, 17, 8.5, -2.5, 17, 16.5, 17, 17, 16.5, -17, 17, 8.5, -2.5, 17, 16.5, -17, 17, 0.5, -2.5, 17, 16.5, 17, 16.5, 16.5, -17, 17, 16.5, -17, 17, 16.5, -17, 16.5, 16.5, -17, 17, 0.5, -17, 17, 0.5, 17, 17, 8.5, 2.5, 17, 0.5, 2.5, 16.5, 0.5, 17, 17, 16.5, 17, 17, 0.5, 17, 17, 0.5, 17, 17, 0.5, 2.5, 16.5, 0.5, 17, 16.5, 0.5, 2.5, 17, 0.5, 2.5, 17, 8.5, 2.5, 17, 0.5, -2.5, 17, 16.5, -17, 17, 0.5, -17, 17, 0.5, -2.5, 16.5, 8.5, -2.5, 17, 8.5, -2.5, 16.5, 0.5, -17, 16.5, 8.5, -2.5, 16.5, 0.5, -2.5, 16.5, 16.5, 17, 16.5, 16.5, -17, 17, 16.5, 17, 16.5, 0.5, 17, 16.5, 16.5, 17, 17, 16.5, 17, 16.5, 8.5, 2.5, 16.5, 16.5, -17, 16.5, 16.5, 17, 16.5, 8.5, 2.5, 16.5, 16.5, 17, 16.5, 0.5, 2.5, 16.5, 8.5, 2.5, 17, 8.5, -2.5, 16.5, 8.5, -2.5, 16.5, 8.5, 2.5, 16.5, 8.5, -2.5, 16.5, 16.5, -17, 16.5, 16.5, -17, 16.5, 8.5, -2.5, 16.5, 0.5, -17, 16.5, 0.5, 2.5, 17, 8.5, 2.5, 16.5, 8.5, 2.5, 16.5, 0.5, 17, 17, 0.5, 2.5, 16.5, 0.5, 2.5, 16.5, 0.5, 2.5, 16.5, 16.5, 17, 16.5, 0.5, 17, 16.5, 16.5, -17, 16.5, 0.5, -17, 17, 0.5, -17, 17, 0.5, -2.5, 16.5, 0.5, -2.5, 16.5, 8.5, -2.5, 17, 0.5, -17, 16.5, 0.5, -17, 16.5, 0.5, -2.5)

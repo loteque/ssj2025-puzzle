@@ -1,11 +1,11 @@
 [gd_scene load_steps=42 format=3 uid="uid://c0otwb05e6i0y"]
 
 [ext_resource type="PackedScene" uid="uid://bmti5u7xmeinj" path="res://puzzles/puzzle_stage.tscn" id="1_gp4yn"]
-[ext_resource type="PackedScene" uid="uid://c2wkalqtpue3v" path="res://room/room.tscn" id="2_rpmy0"]
-[ext_resource type="Script" uid="uid://cjygd0iam6vsv" path="res://room/RoomConfig.gd" id="3_2oss7"]
-[ext_resource type="Script" uid="uid://bo7e47lx1xl3u" path="res://wall/WallConfig.gd" id="4_md5vq"]
-[ext_resource type="PackedScene" uid="uid://cgwl0s1ddx08g" path="res://portal/portal.tscn" id="5_10ut5"]
-[ext_resource type="Resource" uid="uid://deb12wpb5o5mn" path="res://room/variants/deadend/deadend_0.tres" id="6_10ut5"]
+[ext_resource type="PackedScene" uid="uid://c2wkalqtpue3v" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/room/room.tscn" id="2_rpmy0"]
+[ext_resource type="Script" uid="uid://cjygd0iam6vsv" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/room/RoomConfig.gd" id="3_2oss7"]
+[ext_resource type="Script" uid="uid://bo7e47lx1xl3u" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/wall/WallConfig.gd" id="4_md5vq"]
+[ext_resource type="PackedScene" uid="uid://cgwl0s1ddx08g" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/portal/portal.tscn" id="5_10ut5"]
+[ext_resource type="Resource" uid="uid://deb12wpb5o5mn" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/room/variants/deadend/deadend_0.tres" id="6_10ut5"]
 
 [sub_resource type="Resource" id="Resource_10ut5"]
 script = ExtResource("4_md5vq")

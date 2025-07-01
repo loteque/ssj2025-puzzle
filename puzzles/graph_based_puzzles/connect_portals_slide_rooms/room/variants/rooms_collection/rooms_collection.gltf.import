@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b8yps6p171utt"
-path="res://.godot/imported/rooms_collection.gltf-4a563614e7a9132e915d81ef64839002.scn"
+path="res://.godot/imported/rooms_collection.gltf-f662ad3c6954c0a29c4ca7bc9c7309da.scn"
 
 [deps]
 
-source_file="res://room/variants/rooms_collection/rooms_collection.gltf"
-dest_files=["res://.godot/imported/rooms_collection.gltf-4a563614e7a9132e915d81ef64839002.scn"]
+source_file="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/room/variants/rooms_collection/rooms_collection.gltf"
+dest_files=["res://.godot/imported/rooms_collection.gltf-f662ad3c6954c0a29c4ca7bc9c7309da.scn"]
 
 [params]
 

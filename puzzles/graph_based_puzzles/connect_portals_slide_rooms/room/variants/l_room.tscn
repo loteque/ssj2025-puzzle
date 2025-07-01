@@ -1,9 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7apdrbfkcpe7"]
+[gd_scene load_steps=2 format=3 uid="uid://0087y6jyqbbc"]
 
-[ext_resource type="PackedScene" uid="uid://c2wkalqtpue3v" path="res://room/room.tscn" id="1_0njwp"]
+[ext_resource type="PackedScene" uid="uid://c2wkalqtpue3v" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/room/room.tscn" id="1_8tqtp"]
 
-[node name="DRoom" instance=ExtResource("1_0njwp")]
-room_type = 1
+[node name="LRoom" instance=ExtResource("1_8tqtp")]
 
 [node name="Doorway" parent="NWall/Wall/Wall" index="0"]
 visible = false
@@ -15,12 +14,6 @@ disabled = false
 visible = false
 
 [node name="CSGBakedCollisionShape3D2" parent="WWall/Door" index="1"]
-disabled = false
-
-[node name="Doorway" parent="EWall/Wall/Wall" index="0"]
-visible = false
-
-[node name="CSGBakedCollisionShape3D2" parent="EWall/Door" index="1"]
 disabled = false
 
 [editable path="NWall"]

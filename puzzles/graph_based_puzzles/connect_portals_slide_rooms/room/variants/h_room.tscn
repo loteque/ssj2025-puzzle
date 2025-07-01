@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cg8q2a16n4bjc"]
 
-[ext_resource type="PackedScene" uid="uid://c2wkalqtpue3v" path="res://room/room.tscn" id="1_s5gvm"]
+[ext_resource type="PackedScene" uid="uid://c2wkalqtpue3v" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/room/room.tscn" id="1_s5gvm"]
 
 [node name="HRoom" instance=ExtResource("1_s5gvm")]
 room_type = 5

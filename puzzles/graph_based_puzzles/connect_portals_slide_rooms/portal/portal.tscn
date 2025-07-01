@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cgwl0s1ddx08g"]
 
-[ext_resource type="Script" uid="uid://cqxj4rhpkesbd" path="res://portal/portal.gd" id="1_sfjos"]
-[ext_resource type="PackedScene" uid="uid://bk5l6uxhly0si" path="res://power_rail/power_rail.tscn" id="2_508n2"]
-[ext_resource type="PackedScene" uid="uid://b5l4b0xwj0oma" path="res://power_rail/power_connector.tscn" id="3_x3c8y"]
+[ext_resource type="Script" uid="uid://cqxj4rhpkesbd" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/portal/portal.gd" id="1_sfjos"]
+[ext_resource type="PackedScene" uid="uid://bk5l6uxhly0si" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/power_rail/power_rail.tscn" id="2_508n2"]
+[ext_resource type="PackedScene" uid="uid://b5l4b0xwj0oma" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/power_rail/power_connector.tscn" id="3_x3c8y"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sfjos"]
 

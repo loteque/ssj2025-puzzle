@@ -8,13 +8,15 @@ var target_velocity = Vector3.ZERO
 func _ready():
     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-
+    
 func _unhandled_input(event):
     if event.is_action_pressed("demo_quit"):
         get_tree().quit()
     
+    if event is InputEventMouseButton:
+        Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
     if event is InputEventMouseMotion:
-        Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
         rotation_degrees.y -= event.relative.x * 0.5
         %Camera3D.rotation_degrees.x -= event.relative.y * 0.2
         %Camera3D.rotation_degrees.x = clamp(

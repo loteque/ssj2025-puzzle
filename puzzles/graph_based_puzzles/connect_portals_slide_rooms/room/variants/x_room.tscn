@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cbjvkh88j00ky"]
 
-[ext_resource type="PackedScene" uid="uid://c2wkalqtpue3v" path="res://room/room.tscn" id="1_rl2ti"]
+[ext_resource type="PackedScene" uid="uid://c2wkalqtpue3v" path="res://puzzles/graph_based_puzzles/connect_portals_slide_rooms/room/room.tscn" id="1_rl2ti"]
 
 [node name="XRoom" instance=ExtResource("1_rl2ti")]
 
