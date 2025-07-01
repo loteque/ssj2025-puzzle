@@ -34,6 +34,8 @@ extends StaticBody3D
         s_doorway = rc.s_wall.doorway_enabled
         s_door_open = rc.s_wall.door_open
         s_switch_enabled = rc.s_wall.switch_enabled
+        #physics
+        position_sync_enabled = rc.position_sync_enabled
 
 @export_category("Room Type")
 @export_enum("courtyard","deadend","twoway","threeway","cross","hallway") var room_type: int:
@@ -42,13 +44,23 @@ extends StaticBody3D
         room_type = i
     get():
         return room_config.room_type
-
 @export_enum("0", "90", "180", "270") var rotation_90: int:
     set(i):
         room_config.rotation_90 = i
         rotation_90 = i
     get():
         return room_config.rotation_90
+
+@export_category("Physics")
+@export var position_syncronizer: Area3D
+@export var position_sync_enabled: bool:
+    set(b):
+        if !position_syncronizer: return
+        position_syncronizer.enabled = b
+        position_sync_enabled = b
+        room_config.position_sync_enabled = b
+    get():
+        return room_config.position_sync_enabled
 
 @export_category("N Wall")
 @export var n_wall: Node3D

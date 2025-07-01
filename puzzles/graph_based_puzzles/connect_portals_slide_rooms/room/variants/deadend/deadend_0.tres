@@ -39,3 +39,4 @@ n_wall = SubResource("Resource_o4t7f")
 w_wall = SubResource("Resource_tebbj")
 e_wall = SubResource("Resource_a1biw")
 s_wall = SubResource("Resource_g248a")
+position_sync_enabled = true

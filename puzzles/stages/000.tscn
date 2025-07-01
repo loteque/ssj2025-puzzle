@@ -43,6 +43,7 @@ n_wall = SubResource("Resource_7e5ed")
 w_wall = SubResource("Resource_f0avg")
 e_wall = SubResource("Resource_10ut5")
 s_wall = SubResource("Resource_fhprf")
+position_sync_enabled = true
 
 [sub_resource type="Resource" id="Resource_76ps6"]
 script = ExtResource("4_md5vq")
@@ -80,6 +81,7 @@ n_wall = SubResource("Resource_owmhq")
 w_wall = SubResource("Resource_loinl")
 e_wall = SubResource("Resource_76ps6")
 s_wall = SubResource("Resource_8fs6b")
+position_sync_enabled = true
 
 [sub_resource type="Resource" id="Resource_fwy7o"]
 script = ExtResource("4_md5vq")
@@ -117,6 +119,7 @@ n_wall = SubResource("Resource_fy4c6")
 w_wall = SubResource("Resource_3bci7")
 e_wall = SubResource("Resource_fwy7o")
 s_wall = SubResource("Resource_7pi7t")
+position_sync_enabled = false
 metadata/_custom_type_script = "uid://cjygd0iam6vsv"
 
 [sub_resource type="Resource" id="Resource_g2l15"]
@@ -155,6 +158,7 @@ n_wall = SubResource("Resource_5qamh")
 w_wall = SubResource("Resource_0cun5")
 e_wall = SubResource("Resource_g2l15")
 s_wall = SubResource("Resource_5j2ap")
+position_sync_enabled = false
 metadata/_custom_type_script = "uid://cjygd0iam6vsv"
 
 [sub_resource type="Resource" id="Resource_1jdig"]
@@ -193,6 +197,7 @@ n_wall = SubResource("Resource_2p3ct")
 w_wall = SubResource("Resource_ir64l")
 e_wall = SubResource("Resource_1jdig")
 s_wall = SubResource("Resource_xyd4p")
+position_sync_enabled = false
 metadata/_custom_type_script = "uid://cjygd0iam6vsv"
 
 [sub_resource type="Resource" id="Resource_0qvy8"]
@@ -231,6 +236,7 @@ n_wall = SubResource("Resource_i64pn")
 w_wall = SubResource("Resource_dalb5")
 e_wall = SubResource("Resource_0qvy8")
 s_wall = SubResource("Resource_t2ueq")
+position_sync_enabled = false
 metadata/_custom_type_script = "uid://cjygd0iam6vsv"
 
 [sub_resource type="Resource" id="Resource_hxwuh"]
@@ -269,6 +275,7 @@ n_wall = SubResource("Resource_fyurj")
 w_wall = SubResource("Resource_1o3gc")
 e_wall = SubResource("Resource_hxwuh")
 s_wall = SubResource("Resource_sk11m")
+position_sync_enabled = false
 metadata/_custom_type_script = "uid://cjygd0iam6vsv"
 
 [node name="PuzzleStage000" instance=ExtResource("1_gp4yn")]
@@ -282,6 +289,7 @@ unique_name_in_owner = true
 [node name="Room" parent="NW" index="0" instance=ExtResource("2_rpmy0")]
 room_config = SubResource("Resource_md5vq")
 room_type = 1
+position_sync_enabled = true
 n_wall_enabled = true
 n_switch_enabled = true
 w_wall_enabled = true
@@ -302,6 +310,7 @@ unique_name_in_owner = true
 [node name="Room" parent="N" index="0" instance=ExtResource("2_rpmy0")]
 room_config = SubResource("Resource_b5ssb")
 room_type = 3
+position_sync_enabled = true
 n_wall_enabled = true
 n_switch_enabled = true
 w_wall_enabled = true
@@ -338,6 +347,7 @@ unique_name_in_owner = true
 [node name="Room" parent="E" index="0" instance=ExtResource("2_rpmy0")]
 room_config = ExtResource("6_10ut5")
 room_type = 1
+position_sync_enabled = true
 n_wall_enabled = true
 n_doorway = true
 n_switch_enabled = true

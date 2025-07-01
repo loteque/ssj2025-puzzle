@@ -160,7 +160,8 @@ func _ready() -> void:
     else:
         remove_door()
         if not power_rail: await ready
-        power_rail.disable_rail()
+        if not power_rail.has_method("disable_rail"):
+            power_rail.disable_rail()
 
     if door_open:
         open_door()
