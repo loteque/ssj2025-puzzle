@@ -30,7 +30,6 @@ script = ExtResource("1_6wk7l")
 [node name="WallCollision" type="CollisionShape3D" parent="Wall"]
 unique_name_in_owner = true
 shape = SubResource("ConcavePolygonShape3D_7jyaa")
-disabled = true
 
 [node name="Wall" type="CSGBox3D" parent="Wall"]
 unique_name_in_owner = true

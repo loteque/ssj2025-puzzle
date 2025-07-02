@@ -120,7 +120,7 @@ func _is_wall_ready() -> bool:
 
 func enable_wall():
     wall["wall"].show()
-    wall["collision"].show()
+    wall["collision"].disabled = false
     wall["enabled"] = true
 
 
